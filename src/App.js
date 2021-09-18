@@ -1,14 +1,13 @@
 import React from 'react';
-import Menu from './components/Menu';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Signin from './Signin';
+import { BrowserRouter } from 'react-router-dom';
+
+import Routes from './Routes';
 
 function App() {
   return (
-    <div className="contenttt">
-        <Signin/>     
-    </div>
+    <BrowserRouter className="contenttt">
+        <Routes/>     
+    </BrowserRouter>
   );
 }
 
