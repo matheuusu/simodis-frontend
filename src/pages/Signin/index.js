@@ -2,9 +2,7 @@ import React from "react";
 
 const Signin = () => {
     return (
-
-
-        <div id="login-scr" className="content">
+        <div id="login-scr" class="content">
             <header>
                 <p>
                     <a href="">Simodis</a>
@@ -17,7 +15,7 @@ const Signin = () => {
             </div>
 
             <main>
-                <div className="container">
+                <div class="container">
                     <section>
                         <h2>Acessar a conta</h2>
                         <form action="/session" method="POST">
