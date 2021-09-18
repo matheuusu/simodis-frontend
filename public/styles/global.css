@@ -39,6 +39,10 @@ body, button, input, textarea{
     /* font-family: 'Poppins', sans-serif; */
 }
 
+.contenti {
+    width: 100%;
+}
+
 .content{
     width: 100%;
     margin: 0 auto;

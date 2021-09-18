@@ -6,7 +6,7 @@ import Signin from './Signin';
 
 function App() {
   return (
-    <div className="content">
+    <div className="contentt">
         <Signin/>     
     </div>
   );
