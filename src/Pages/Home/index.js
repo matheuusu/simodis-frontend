@@ -8,9 +8,7 @@ import Content from '../../components/Content';
 export default function Home() {
     return(
         <BrowserRouter>            
-            <Header/>
-            <Menu/>
-            <Content/>            
+            <Menu/>    
         </BrowserRouter>        
     );
 }
