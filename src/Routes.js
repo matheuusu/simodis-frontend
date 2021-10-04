@@ -2,6 +2,7 @@ import React, {  } from "react";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignIn from './Pages/Signin';
 import Home from './Pages/Home';
+import Course from './Pages/Courses';
 
 import { isLogged   } from './Helpers/AuthHandler';
 
@@ -23,10 +24,14 @@ export default () => {
                 <SignIn />
             </Route>
 
+            <Route exact path="/teste">
+                <Course />
+            </Route>
+
             <Private exact path="/home">
                 <Home />
             </Private>
-            
+
         </Switch>
     );
 }

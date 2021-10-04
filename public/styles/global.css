@@ -28,7 +28,7 @@ html{
 body{
     display: flex;
     min-height: 100vh;
-    background: var(--background);
+    background: var(--light-blue);
 }
 
 body, button, input, textarea{
@@ -44,7 +44,7 @@ body, button, input, textarea{
     margin: 0 auto;
 }
 
-.contentt, .contenttt {
+.contentt, .contenttt, .signin-wrapper {
     display: contents;
 }
 
@@ -62,12 +62,12 @@ body, button, input, textarea{
 
 
 /*--------- input and buttons*/
-input, button, .button{
+.signin-wrapper input, button, .button{
     border-radius: .8rem;
     height: 5rem;
 }
 
-button, .button{
+.signin-wrapper button, .button{
     font-family: 'Poppins';
     font-weight: 500;
     line-height: 0;
@@ -84,30 +84,30 @@ button, .button{
     cursor: pointer;
 }
 
-button:hover, .button:hover{
+.signin-wrapper button:hover, .button:hover{
     filter: brightness(1.2);
 }
 
-button > img,
+.signin-wrapper button > img,
 .button > img{
     margin-right: 1rem;
     width: 2rem;
 }
 
-button.outlined,
+.signin-wrapper button.outlined,
 .button.outlined{
     background: var(--white);
     color: var(--blue);
     border: .2rem solid var(--blue);
 }
 
-button.red,
+.signin-wrapper button.red,
 .button.red{
     background: var(--red);
     color: var(--white);
 }
 
-button.grey,
+.signin-wrapper button.grey,
 .button.grey{
     background: var(--grey-light);
     color: var(--grey-dark);
@@ -117,16 +117,16 @@ button.grey,
 
 /*** HEADER ****/
 
-.content header{
+.signin-wrapper .content header{
     width: 80%;  
     margin: 3.5rem auto;
 }
 
-.content header img{
+.signin-wrapper .content header img{
     width: 16.7rem;
 }
 
-.content header p a {
+.signin-wrapper .content header p a {
     font-family: 'Poppins', sans-serif;
     color: var(--black);
     font-size: clamp(20px, 5vw, 4rem);

@@ -1,0 +1,113 @@
+/* [Header] ///////////////////////////////////////////////*/
+.courses {
+    width: 100%;
+}
+.courses .content header {
+    background: #fff;
+    height: 8rem;
+    width: 100%;
+    padding: 0 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.courses .content header .logo-wrapper h1 a {
+    font-size: 3.5rem;
+    color: var(--grey-dark);
+}
+
+.courses .content header .navigation-wrapper nav a {
+    padding: 0 2rem;
+    color: var(--grey-dark);
+    font-weight: 700;
+}
+
+.courses .content header .profile-wrapper {
+    padding: .2rem;
+    border: .3rem solid var(--grey-dark);
+    border-radius: 6rem;
+}
+
+.courses .content header .profile-wrapper .profile {
+    clip-path: circle();
+    height: 6rem;
+    width: 6rem;
+
+    background: var(--grey-dark) url('https://github.com/matheuusu.png');
+    background-size: cover;
+}
+
+/* [Main ] ////////////////////////////////////////////////*/
+
+.courses .content main .main-wrapper {
+    background: var(--background);
+    margin-top: .10rem;
+    height: 100vh;
+}
+
+.courses .content main .main-wrapper .main-content {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.courses .content main .main-wrapper .main-content .course-wrapper {
+    padding: 1rem;
+}
+
+.courses .content main .main-wrapper .main-content .course-wrapper .course-title{
+    margin: 5rem 0 2rem 0;
+    color: var(--grey-dark);
+
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.courses .course-title .course-action a {
+    background: var(--blue);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.courses .course-title .course-action a:hover {
+    
+}
+
+
+.courses .content main .main-wrapper .main-content .course-wrapper .courses-content section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.courses .content main .main-wrapper .main-content .course-wrapper .courses {
+    display: flex;
+    flex-direction: column;
+    width: 28rem;
+    height: 38rem;
+    border: .2rem solid var(--grey-light);
+    border-bottom: .3rem solid var(--grey-blue);
+    border-radius: .5rem .5rem 0 0;
+    background: #fff;
+    padding: 3.2rem 3.2rem 6.4rem;
+}
+
+.courses .content main .main-wrapper .main-content .course-wrapper .courses .course-icon {
+    width: 8rem;
+    height: 8rem;
+    border-radius: .5rem;
+    background: var(--blue);
+    line-height: 8rem;
+    text-align: center;
+    color: #fff;
+}
+
+.courses .content main .main-wrapper .main-content .course-wrapper .courses h1 {
+    color: var(--grey-dark);
+    margin: 4rem 0;
+}
+
