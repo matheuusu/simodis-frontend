@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter } from 'react-router-dom';
 
-const Courses = () => {
 
+const Courses = () => {
 
     return (
         <BrowserRouter>
@@ -64,7 +64,7 @@ const Courses = () => {
                                                 </span>
                                             </a>
                                             <a class="courses" href="">
-                                                <div class="course-icon">icon</div>
+                                                <div class="a.course-icon">icon</div>
                                                 <h1>title</h1>
                                                 <span>
                                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, dolor eligendi
@@ -81,7 +81,7 @@ const Courses = () => {
                 </div>
 
                 {/* <!----- MODAL ------> */}
-                <div class="modal-wrapper">
+                <div class="modal-wrapper active">
                     <div class="modal">
                         <h2>Criar Curso</h2>
                         <p>Insira o nome e descrição do curso que deseja criar</p>
@@ -102,6 +102,8 @@ const Courses = () => {
                     </div>
                 </div>
             </div>
+
+            
 
 
         </BrowserRouter>
