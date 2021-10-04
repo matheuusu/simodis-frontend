@@ -24,14 +24,13 @@ export default () => {
                 <SignIn />
             </Route>
 
-            <Route exact path="/cursos">
-                <Course />
-            </Route>
-
-            <Route exact path="/home">
+            <Private exact path="/home">
                 <Home />
-            </Route>
+            </Private>
 
+            <Private exact path="/cursos">
+                <Course />
+            </Private>            
         </Switch>
     );
 }

@@ -4,11 +4,8 @@ import qs from "qs";
 const BASEAPI = "http://localhost:4000";
 
 const apiFetchPost = async (endpoint, body) => {
-    //Verificando se algum token foi enviado no Body
     if(!body.token){
-        //Se não foi enviado, pega do Cookies do navegador.
         let token = Cookies.get('token');
-        //Se ele existir no Cookies, envia o token no Body da requisição.
         if(token){
             body.token = token;
         }
@@ -24,7 +21,6 @@ const apiFetchPost = async (endpoint, body) => {
     });
     const json = await res.json();
 
-    //Verificando se há algum notallowed vindo do Middleware (Backend)
     if (json.notallowed){
         window.location.href = '/';
         return;
@@ -33,14 +29,48 @@ const apiFetchPost = async (endpoint, body) => {
     return json;
 }
 
+const apiFetchGet = async (endpoint, body = []) => {
+    if(!body.token){
+        let token = Cookies.get('token');
+        if(token){
+            body.token = token;
+        }
+    }
+
+    const res = await fetch(`${BASEAPI+endpoint}?${qs.stringify(body)}`);
+    const json = await res.json();
+
+    if (json.notallowed){
+        window.location.href = '/signin';
+        return;
+    }
+
+    return json;
+}
+
 //Criando um Hooks com as funções que farão requisições no WebService
 const SimodisAPI = {
-    login: async (nome, senha) => {
+    login: async (email, password) => {
         const json = await apiFetchPost(
             '/user/signin',
-            {nome, senha}
+            {email, password}
         );
         return json;
+    },
+
+    addCursos: async (name, description, users_id) => {
+        const json = await apiFetchPost(
+            '/course/add',
+            {name, description, users_id}
+        );
+        return json;
+    },
+
+    getCoursers: async () => {
+        const json = await apiFetchGet(
+            '/course/list'
+        );
+        return json.coursers;
     }
 }
 

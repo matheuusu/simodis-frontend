@@ -13,3 +13,8 @@ export const isLogged = () => {
     const token = Cookies.get('token');
     return (token) ? true : false;
 }
+
+export const myToken = () => {
+    const myToken = Cookies.get('token');
+    return(myToken);
+}

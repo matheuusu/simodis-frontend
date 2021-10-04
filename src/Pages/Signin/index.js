@@ -7,7 +7,7 @@ const Signin = () => {
 
     const api = useApi();
 
-    const [usuario, setUsuario] = useState('');
+    const [email, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
     const [disable, setDisable] = useState(false);
 
@@ -15,11 +15,11 @@ const Signin = () => {
         e.preventDefault();
         setDisable(true);
 
-        if (!usuario || !senha) {
+        if (!email || !senha) {
             alert("Informe suas credenciais!");
         } else {
 
-            const json = await api.login(usuario, senha);
+            const json = await api.login(email, senha);
 
             if (json.error) {
                 alert(JSON.stringify(json.error));
@@ -54,11 +54,11 @@ const Signin = () => {
                                 <form action="/session" method="POST">
                                     <label htmlFor="login-id" className="sr-only">Insira sua Matrícula</label>
                                     <input
-                                        type="text"
+                                        type="email"
                                         id="login-id"
                                         name="email"
-                                        placeholder="Insira sua matricula"
-                                        value={usuario}
+                                        placeholder="Insira seu email"
+                                        value={email}
                                         disabled={disable}
                                         onChange={
                                             (e) => { setUsuario(e.target.value) }

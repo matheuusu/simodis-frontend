@@ -1,13 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from 'react-router-dom';
-
+import useApi from '../../Helpers/SimodisAPI';
+import { myToken } from '../../Helpers/AuthHandler';
 
 
 const Courses = () => {
 
+    const api = useApi();
+    const token = myToken();
+
+    const [cursoName, setCursoName] = useState('');
+    const [descriptions, setDescriptions] = useState('');
+    const [coursers, setCoursers] = useState([]);
+
     const [mostrarModal, setMostrarModal] = useState(false);
     const handleMostrarModal = () => {
         !mostrarModal ? setMostrarModal(true) : setMostrarModal(false);
+    }
+
+    useEffect(()=>{
+        const getListCoursers = async () => {
+            const listCoursers = await api.getCoursers();
+            setCoursers(listCoursers);
+        }
+        getListCoursers();
+    },[]);
+
+    const handleCriarCurso = async (e) => {
+        e.preventDefault();
+        if(!cursoName && !descriptions){
+            alert("Insira os dados do curso!");
+            setMostrarModal(false);
+        }else{            
+            const json = await api.addCursos(cursoName, descriptions);
+
+            if(json.error){
+                alert(JSON.stringify(json.error));
+            }
+
+            alert("Ok");
+        }
+        
     }
 
     return (
@@ -16,15 +49,15 @@ const Courses = () => {
                 <div class="content">
                     <header>
                         <div class="logo-wrapper">
-                            <h1><a href="">Simodes</a></h1>
+                            <h1><a >Simodes</a></h1>
                         </div>
                         <div class="navigation-wrapper">
                             <nav>
-                                <a href="">Home</a>
-                                <a href="">Perfil</a>
-                                <a href="" class="selected">Cursos</a>
-                                <a href="">Ranking</a>
-                                <a href="">Configurações</a>
+                                <a>Home</a>
+                                <a>Perfil</a>
+                                <a>Cursos</a>
+                                <a>Ranking</a>
+                                <a>Configurações</a>
                             </nav>
                         </div>
                         <div class="profile-wrapper">
@@ -39,45 +72,23 @@ const Courses = () => {
                                     <div class="course-title">
                                         <h1>Cursos disponíveis</h1>
                                         <div class="course-action">
-                                            <div href="" onClick={() => {handleMostrarModal()}} class="create-course">Create</div>
+                                            <div onClick={() => {handleMostrarModal()}} class="create-course">Create</div>
                                         </div>
                                     </div>
 
                                     <div class="courses-content">
-                                        <section>
-                                            <a class="courses" href="">
-                                                <div class="course-icon">icon</div>
-                                                <h1>title</h1>
-                                                <span>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, dolor eligendi
-                                                    deserunt quisquam ducimus.
-                                                </span>
-                                            </a>
-                                            <a class="courses" href="">
-                                                <div class="course-icon">icon</div>
-                                                <h1>title</h1>
-                                                <span>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, dolor eligendi
-                                                    deserunt quisquam ducimus.
-                                                </span>
-                                            </a>
-                                            <a class="courses" href="">
-                                                <div class="course-icon">icon</div>
-                                                <h1>title</h1>
-                                                <span>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, dolor eligendi
-                                                    deserunt quisquam ducimus.
-                                                </span>
-                                            </a>
-                                            <a class="courses" href="">
-                                                <div class="course-icon">icon</div>
-                                                <h1>title</h1>
-                                                <span>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, dolor eligendi
-                                                    deserunt quisquam ducimus.
-                                                </span>
-                                            </a>
-                                            
+                                        <section>                                            
+                                            {coursers.map((item, index) => {
+                                                return(
+                                                    <a class="courses">
+                                                        <div class="course-icon">icon</div>
+                                                        <h1>{item.name}</h1>
+                                                        <span>
+                                                            {item.description}
+                                                        </span>                                                              
+                                                        </a>                                                       
+                                                );
+                                            })}                                                                                                                                                                                
                                         </section>
                                     </div>
                                 </div>
@@ -94,16 +105,34 @@ const Courses = () => {
                             <h2>Criar Curso</h2>
                             <p>Insira o nome e descrição do curso que deseja criar</p>
 
-                            <form action="#" method="POST">
+                            <form method="POST">
                                 <label class="sr-only" for-id="password">nome do curso</label>
-                                <input type="text" id="course-name" name="course-name" placeholder="nome do curso" />
+                                <input 
+                                    type="text" 
+                                    id="course-name" 
+                                    name="course-name" 
+                                    placeholder="nome do curso" 
+                                    value={cursoName}
+                                    onChange={(e) => {
+                                        setCursoName(e.target.value)
+                                    }}
+                                />
 
                                 <label class="sr-only" for-id="password">nome do curso</label>
-                                <input type="text" id="course-description" name="course-description" placeholder="descrição" />
+                                <input 
+                                    type="text" 
+                                    id="course-description" 
+                                    name="course-description" 
+                                    placeholder="descrição" 
+                                    value={descriptions}
+                                    onChange={(e) => {
+                                        setDescriptions(e.target.value)
+                                    }}
+                                />
 
                                 <div class="buttons">
                                     <div onClick={() => {setMostrarModal(false)}} class="button grey cancel">Cancelar</div>
-                                    <button class="red">Criar</button>
+                                    <button onClick={handleCriarCurso} class="red">Criar</button>
                                 </div>
                             </form>
 
