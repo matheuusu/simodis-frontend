@@ -80,9 +80,7 @@
     
 }
 
-.home-wrapper .content main .main-wrapper .main-content .wel-continue:hover {
-    border: .1rem solid var(--grey-dark);
-}
+
 
 .home-wrapper .content main .main-wrapper .main-content .wel-continue a {
     display: flex;
@@ -118,11 +116,11 @@
     height: 30rem;
     padding: 3.2rem 3.2rem 6.4rem;
     border-radius: .5rem .5rem 0 0;
-    border: .2rem solid var(--grey-light);
+    border: .3rem solid var(--grey-light);
 }
 
 .home-wrapper .carousel-items:hover {
-    border: .1rem solid var(--grey-dark);
+    border: .2rem solid var(--grey-light);
 }
 
 .home-wrapper .carousel-items .course-icon {
