@@ -75,9 +75,13 @@
 .home-wrapper .content main .main-wrapper .main-content .wel-continue {
     margin-top: 4rem;
     background: #fff;
-    border: .1rem solid var(--grey-light);
+    border: .3rem solid var(--grey-light);
     border-radius: .5rem;
     
+}
+
+.home-wrapper .content main .main-wrapper .main-content .wel-continue:hover {
+    border: .1rem solid var(--grey-dark);
 }
 
 .home-wrapper .content main .main-wrapper .main-content .wel-continue a {
@@ -93,6 +97,11 @@
 .home-wrapper .content main .main-wrapper .main-content .wel-continue a .button-content {
     display: flex;
     align-items: center;
+
+    background: var(--blue);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: .5rem;
 }
 
 .home-wrapper .most-courses {
@@ -110,6 +119,10 @@
     padding: 3.2rem 3.2rem 6.4rem;
     border-radius: .5rem .5rem 0 0;
     border: .2rem solid var(--grey-light);
+}
+
+.home-wrapper .carousel-items:hover {
+    border: .1rem solid var(--grey-dark);
 }
 
 .home-wrapper .carousel-items .course-icon {
