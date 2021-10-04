@@ -101,7 +101,7 @@ const Courses = () => {
                                 <input type="text" id="course-description" name="course-description" placeholder="descrição" />
 
                                 <div class="buttons">
-                                    <div class="button grey cancel">Cancelar</div>
+                                    <div onClick={() => {setMostrarModal(false)}} class="button grey cancel">Cancelar</div>
                                     <button class="red">Criar</button>
                                 </div>
                             </form>
