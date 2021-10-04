@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter } from 'react-router-dom';
 
 
+
 const Courses = () => {
+
+    const [mostrarModal, setMostrarModal] = useState(false);
+    const handleMostrarModal = () => {
+        !mostrarModal ? setMostrarModal(true) : setMostrarModal(false);
+    }
 
     return (
         <BrowserRouter>
@@ -33,7 +39,7 @@ const Courses = () => {
                                     <div class="course-title">
                                         <h1>Cursos disponíveis</h1>
                                         <div class="course-action">
-                                            <a href="" class="create-course">Create</a>
+                                            <div href="" onClick={() => {handleMostrarModal()}} class="create-course">Create</div>
                                         </div>
                                     </div>
 
@@ -81,31 +87,32 @@ const Courses = () => {
                 </div>
 
                 {/* <!----- MODAL ------> */}
-                <div class="modal-wrapper active">
-                    <div class="modal">
-                        <h2>Criar Curso</h2>
-                        <p>Insira o nome e descrição do curso que deseja criar</p>
+                {mostrarModal ?
+                    <div class="modal-wrapper active">
+                        <div class="modal">
+                            <h2>Criar Curso</h2>
+                            <p>Insira o nome e descrição do curso que deseja criar</p>
 
-                        <form action="#" method="POST">
-                            <label class="sr-only" for-id="password">nome do curso</label>
-                            <input type="text" id="course-name" name="course-name" placeholder="nome do curso" />
+                            <form action="#" method="POST">
+                                <label class="sr-only" for-id="password">nome do curso</label>
+                                <input type="text" id="course-name" name="course-name" placeholder="nome do curso" />
 
-                            <label class="sr-only" for-id="password">nome do curso</label>
-                            <input type="text" id="course-description" name="course-description" placeholder="descrição" />
+                                <label class="sr-only" for-id="password">nome do curso</label>
+                                <input type="text" id="course-description" name="course-description" placeholder="descrição" />
 
-                            <div class="buttons">
-                                <div class="button grey cancel">Cancelar</div>
-                                <button class="red">Criar</button>
-                            </div>
-                        </form>
+                                <div class="buttons">
+                                    <div class="button grey cancel">Cancelar</div>
+                                    <button class="red">Criar</button>
+                                </div>
+                            </form>
 
+                        </div>
                     </div>
-                </div>
+                    :
+                    null
+                }
+
             </div>
-
-            
-
-
         </BrowserRouter>
     )
 
