@@ -70,13 +70,14 @@ const Courses = () => {
                                                 </span>
                                             </a>
                                             <a class="courses" href="">
-                                                <div class="a.course-icon">icon</div>
+                                                <div class="course-icon">icon</div>
                                                 <h1>title</h1>
                                                 <span>
                                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, dolor eligendi
                                                     deserunt quisquam ducimus.
                                                 </span>
                                             </a>
+                                            
                                         </section>
                                     </div>
                                 </div>

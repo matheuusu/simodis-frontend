@@ -66,12 +66,13 @@
     justify-content: space-between;
 }
 
-.courses .course-title .course-action a {
+.courses .course-title .course-action div {
     background: var(--blue);
     padding: 1rem 2rem;
     border-radius: .5rem;
     color: var(--white);
     font-weight: 700;
+    cursor: pointer;
 }
 
 .courses .course-title .course-action a:hover {
