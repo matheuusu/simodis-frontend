@@ -12,6 +12,7 @@ const Courses = () => {
     const [cursoName, setCursoName] = useState('');
     const [descriptions, setDescriptions] = useState('');
     const [coursers, setCoursers] = useState([]);
+    const [disable, setDisable] = useState(false);
 
     const [mostrarModal, setMostrarModal] = useState(false);
     const handleMostrarModal = () => {
@@ -28,6 +29,8 @@ const Courses = () => {
 
     const handleCriarCurso = async (e) => {
         e.preventDefault();
+        setDisable(false);
+
         if(!cursoName && !descriptions){
             alert("Insira os dados do curso!");
             setMostrarModal(false);
@@ -36,9 +39,13 @@ const Courses = () => {
 
             if(json.error){
                 alert(JSON.stringify(json.error));
+            }else{                
+                setCursoName('');
+                setDescriptions('');
+                setMostrarModal(false);
+                window.location.reload("/cursos");             
             }
-
-            alert("Ok");
+            
         }
         
     }
@@ -113,6 +120,7 @@ const Courses = () => {
                                     name="course-name" 
                                     placeholder="nome do curso" 
                                     value={cursoName}
+                                    disabled={disable}
                                     onChange={(e) => {
                                         setCursoName(e.target.value)
                                     }}
@@ -125,6 +133,7 @@ const Courses = () => {
                                     name="course-description" 
                                     placeholder="descrição" 
                                     value={descriptions}
+                                    disabled={disable}
                                     onChange={(e) => {
                                         setDescriptions(e.target.value)
                                     }}
