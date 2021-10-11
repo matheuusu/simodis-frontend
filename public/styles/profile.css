@@ -42,6 +42,7 @@
 .profile .content main .main-wrapper {
   margin: 0 auto;
   width: 70%;
+  height: 100vh;
 }
 
 .profile .content main .main-wrapper .profile-wrapper {
