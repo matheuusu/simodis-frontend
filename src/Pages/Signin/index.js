@@ -92,10 +92,10 @@ const Signin = () => {
                             </div>
 
                             <section>
-                                <h2>Não consegue acessar a conta?</h2>
+                                <h2>Ainda não possui acesso a plataforma?</h2>
                                 <a href="/recovery-pass" className="button outlined">
                                     <img src="/images/users.svg" alt="Recuperar senha" />
-                                    Recuperar senha
+                                    Criar conta
                                 </a>
                             </section>
                         </div>
