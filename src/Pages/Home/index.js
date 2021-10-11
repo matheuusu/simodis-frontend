@@ -17,7 +17,7 @@ export default function Home() {
                         <div class="navigation-wrapper">
                             <nav>
                                 <a >Home</a>
-                                <a href="">Perfil</a>
+                                <a onClick={() => window.location.href = '/perfil'}>Perfil</a>
                                 <a onClick={() => window.location.href = '/cursos'}>Cursos</a>
                                 <a href="">Ranking</a>
                                 <a href="">Configurações</a>

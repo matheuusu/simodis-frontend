@@ -75,11 +75,6 @@
     cursor: pointer;
 }
 
-.courses .course-title .course-action a:hover {
-    
-}
-
-
 .courses .content main .main-wrapper .main-content .course-wrapper .courses-content section {
     display: flex;
     justify-content: space-between;

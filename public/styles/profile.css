@@ -1,0 +1,131 @@
+.profile .content header {
+  background: #fff;
+  height: 8rem;
+  width: 100%;
+  padding: 0 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: .2rem solid var(--grey-light);
+}
+
+.profile .content header .logo-wrapper h1 a {
+  font-size: 3.5rem;
+  color: var(--blue);
+}
+
+.profile .content header .navigation-wrapper nav a {
+  padding: 0 2rem;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.profile .content header .profile-wrapper {
+  padding: 0.2rem;
+  border: 0.3rem solid var(--blue);
+  border-radius: 6rem;
+}
+
+.profile .content header .profile-wrapper .profile {
+  clip-path: circle();
+  height: 6rem;
+  width: 6rem;
+
+  background: var(--grey-dark) url('https://github.com/matheuusu.png');
+  background-size: cover;
+}
+
+/* [Main] /////////////////////////////////////////////////*/
+
+.profile .content main .main-wrapper {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.profile .content main .main-wrapper .profile-wrapper {
+  margin-top: 5rem;
+  background: #fff;
+}
+
+.profile .content main .main-wrapper .profile-wrapper .profile-bar {
+  background: var(--blue);
+  border-radius: 0.6rem 0.6rem 0rem 0;
+  height: 3.5rem;
+}
+
+.profile .content main .main-wrapper .profile-wrapper .profile-content {
+  display: flex;
+  border: .2rem solid var(--grey-light);
+  border-top: none;
+  height: 40rem;
+}
+
+.profile .main-wrapper .profile-wrapper .profile-content .profile-user {
+  border-right: .1rem solid var(--grey-blue);
+  padding: 1.5rem;
+  color: var(--grey-dark);
+  margin: 1rem 0;
+  min-width: 34rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile .content main .main-wrapper .profile-wrapper .profile-content .image-wrapper {
+  padding: 0.2rem;
+  border: 0.3rem solid var(--blue);
+  border-radius: 12rem;
+  width: 19rem;
+  margin-bottom: 1rem;
+}
+
+.profile .profile-wrapper .profile-content .image-wrapper .user-image {
+  clip-path: circle();
+  height: 18rem;
+  width: 18rem;
+
+  background: var(--grey-dark) url('https://github.com/matheuusu.png');
+  background-size: cover;
+}
+
+.profile .profile-wrapper .profile-content .profile-user .profile-button {
+  background: var(--blue);
+  color: var(--white);
+  padding: 1rem 3rem;
+  border-radius: .6rem;
+  margin-top: 3rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile .profile-wrapper .profile-content .user-infor {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile .field-wrapper {
+  display: flex;
+}
+
+.profile .field-wrapper .field {
+  margin-right: 5rem;
+}
+
+.profile .field {
+  margin-bottom: 2.5rem;
+  font-size: 1.8rem;
+}
+
+.profile .field .field-title {
+  color: var(--grey-blue);
+}
+
+.profile .field .field-content {
+  color: var(--grey-dark);
+}
+

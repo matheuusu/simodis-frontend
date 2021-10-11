@@ -14,22 +14,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+  border-bottom: .2rem solid var(--grey-light);
 }
 
 .home-wrapper .content header .logo-wrapper h1 a {
     font-size: 3.5rem;
-    color: var(--grey-dark);
+    color: var(--blue);
 }
 
 .home-wrapper .content header .navigation-wrapper nav a {
     padding: 0 2rem;
-    color: var(--grey-dark);
+    color: var(--blue);
     font-weight: 700;
 }
 
 .home-wrapper .content header .profile-wrapper {
     padding: .2rem;
-    border: .3rem solid var(--grey-dark);
+    border: .3rem solid var(--blue);
     border-radius: 6rem;
 }
 

@@ -60,8 +60,8 @@ const Courses = () => {
                         </div>
                         <div class="navigation-wrapper">
                             <nav>
-                                <a>Home</a>
-                                <a>Perfil</a>
+                                <a onClick={() => window.location.href = '/home'}>Home</a>
+                                <a onClick={() => window.location.href = '/perfil'}>Perfil</a>
                                 <a>Cursos</a>
                                 <a>Ranking</a>
                                 <a>Configurações</a>
