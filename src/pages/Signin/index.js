@@ -38,7 +38,7 @@ const Signin = () => {
                 <div id="login-scr" class="content">
                     <header>
                         <p>
-                            <a href="">Simodis</a>
+                            <a href="">Simodes</a>
                         </p>
                     </header>
 

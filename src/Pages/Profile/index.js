@@ -19,7 +19,7 @@ const Profiles = () => {
                 <a onClick={() => window.location.href = '/cursos'}>
                   Cursos
                 </a>
-                <a href="">Ranking</a>
+                <a onClick={() => (window.location.href = '/rankings')}>Ranking</a>
                 <a href="">Configurações</a>
               </nav>
             </div>
@@ -46,10 +46,7 @@ const Profiles = () => {
                         <p class="field-title">Nome</p>
                         <p class="field-content">Matheus Silva das Mercês</p>
                       </div>
-                      <div class="field">
-                        <p class="field-title">Idade</p>
-                        <p class="field-content">21 anos</p>
-                      </div>
+                      
                     </div>
                     <div class="field">
                       <p class="field-title">Sobre</p>

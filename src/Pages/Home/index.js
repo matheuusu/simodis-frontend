@@ -3,9 +3,14 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import Content from '../../components/Content';
+import { logout } from '../../Helpers/AuthHandler'
 
 
 export default function Home() {
+    const handleLogout = () => {
+        logout();
+        window.location.href('/')
+    }
     return (
         <BrowserRouter>
             <div class="home-wrapper">
@@ -19,8 +24,8 @@ export default function Home() {
                                 <a >Home</a>
                                 <a onClick={() => window.location.href = '/perfil'}>Perfil</a>
                                 <a onClick={() => window.location.href = '/cursos'}>Cursos</a>
-                                <a href="">Ranking</a>
-                                <a href="">Configurações</a>
+                                <a onClick={() => window.location.href = '/rankings'}>Ranking</a>
+                                <a onClick={handleLogout}>Sair</a>
                             </nav>
                         </div>
                         <div class="profile-wrapper">
@@ -43,7 +48,7 @@ export default function Home() {
 
                                 <div class="wel-continue">
                                     <a class="wel-button" href="">
-                                        <h2>title course</h2>
+                                        <h2>Programação orientada a objetos</h2>
                                         <div class="button-content">
                                             <span>Continar assistindo</span>
                                             

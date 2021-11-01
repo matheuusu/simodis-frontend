@@ -4,6 +4,9 @@ import SignIn from './Pages/Signin'
 import Home from './Pages/Home'
 import Course from './Pages/Course'
 import Profile from './Pages/Profile'
+import Ranking from './Pages/Ranking'
+import AdminCourse from './Pages/admin-course'
+import AdminUser from './Pages/admin-user'
 
 import { isLogged } from './Helpers/AuthHandler'
 
@@ -21,6 +24,14 @@ export default () => {
         <SignIn />
       </Route>
 
+      <Private exact path="/admin/courses">
+        <AdminCourse />
+      </Private>
+      
+      <Private exact path="/admin/users">
+        <AdminUser />
+      </Private>
+
       <Private exact path="/home">
         <Home />
       </Private>
@@ -31,6 +42,10 @@ export default () => {
 
       <Private exact path="/perfil">
         <Profile />
+      </Private>
+
+      <Private exact path="/rankings">
+        <Ranking />
       </Private>
     </Switch>
   )

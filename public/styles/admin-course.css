@@ -1,0 +1,157 @@
+#admin-course ul {
+  list-style: none;
+}
+
+#admin-course .title {
+  color: var(--grey-dark);
+}
+
+#admin-course {
+  width: 100%;
+}
+
+/* [ Header ] /////////////////////////////////// */
+#admin-course #header {
+  height: 8rem;
+  width: 100%;
+  padding: 0 4rem;
+  border-bottom: 2px solid #e4e4e4;
+  background: var(--white);
+
+  color: var(--grey-dark);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Menu */
+#admin-course #header ul {
+  display: flex;
+  color: var(--grey-dark);
+}
+
+#admin-course #header ul li {
+  margin: 0 2rem;
+  font-weight: 700;
+}
+
+#admin-course #header ul li a {
+  color: var(--grey-dark);
+}
+
+/* Profile */
+#admin-course #header .profile-wrapper {
+  border: 3px solid var(--grey-dark);
+  border-radius: 6rem;
+  padding: 0.2rem;
+}
+
+#admin-course #header .profile-wrapper .profile {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 6rem;
+  background: url('https://github.com/matheuusu.png');
+  background-size: cover;
+}
+
+/* [ Main ] ///////////////////////////////////// */
+#admin-course main .main-wrapper {
+  margin-top: 5rem;
+}
+
+#admin-course main .main-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#admin-course main .main-content h2 {
+  margin-left: 2rem;
+  margin-bottom: -2rem;
+}
+/* Tables */
+#admin-course .table-wrapper {
+  margin-top: 3rem;
+}
+
+#admin-course table {
+  margin: 0 2rem;
+}
+
+#admin-course thead {
+  display: table-header-group;
+  vertical-align: middle;
+}
+
+#admin-course table {
+  width: 100%;
+  border-spacing: 0 0.5rem;
+  color: var(--grey-dark);
+}
+
+#admin-course table thead th {
+  background: white;
+
+  font-weight: 700;
+  padding: 1rem 2rem;
+
+  text-align: left;
+}
+#admin-course table thead tr th:first-child, 
+#admin-course table tbody tr td:first-child
+{
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+#admin-course table thead tr th:last-child, 
+#admin-course table tbody tr td:last-child{
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+#admin-course table tbody tr {
+  opacity: 1
+}
+
+#admin-course table tbody tr:hover {
+  opacity: 1
+}
+
+#admin-course table tbody td {
+  background:white;
+  padding: 2.5rem 2rem;
+}
+
+#admin-course td.description {
+  color: var(--dark-blue);
+}
+
+#admin-course td.income {
+  color: #12a454;
+}
+
+#admin-course td.expense {
+  color: #e92929;
+}
+
+/* geral */
+#admin-course .buttoon {
+  width: 10rem;
+  height: 3.5rem;
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+  border-radius: .25rem;
+  cursor: pointer;
+  line-height: 3.5rem;
+  position: relative;
+  right: -20rem;
+  font-weight: 700;
+}
+
+#admin-course .relativo {
+  position: relative;
+}
+
+a {
+  cursor: pointer;
+}
