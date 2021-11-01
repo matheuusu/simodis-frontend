@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
 import { myToken } from '../../Helpers/AuthHandler'
+import { logout } from '../../Helpers/AuthHandler'
 
 const Courses = () => {
+  const handleLogout = () => {
+    window.location.href='/'
+    logout()
+  }
   const api = useApi()
   const token = myToken()
 
@@ -26,6 +31,10 @@ const Courses = () => {
   }, [])
 
   const handleCriarCurso = async e => {
+    const handleLogout = () => {
+      logout()
+      window.location.href('/')
+    }
     e.preventDefault()
     setDisable(false)
 
@@ -64,7 +73,7 @@ const Courses = () => {
                 <a onClick={() => (window.location.href = '/rankings')}>
                   Ranking
                 </a>
-                <a>Configurações</a>
+                <a onClick={handleLogout}>Sair</a>
               </nav>
             </div>
             <div class="profile-wrapper">

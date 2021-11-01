@@ -1,7 +1,13 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { logout } from '../../Helpers/AuthHandler'
 
 const Rankings = () => {
+  const handleLogout = () => {
+    window.location.href='/'
+    logout()
+  }
+
   return (
     <BrowserRouter>
       <div id="rankings">
@@ -18,7 +24,7 @@ const Rankings = () => {
                 <a onClick={() => (window.location.href = '/perfil')}>Perfil</a>
                 <a onClick={() => (window.location.href = '/cursos')}>Cursos</a>
                 <a>Ranking</a>
-                <a>Configurações</a>
+                <a onClick={handleLogout}>Sair</a>
               </nav>
             </div>
             <div class="profile-wrapper">

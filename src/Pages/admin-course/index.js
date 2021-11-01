@@ -13,7 +13,9 @@ const adminCourses = () => {
                 <a href="">Home</a>
               </li>
               <li>
-                <a onClick={() => window.location.href = '/admin/users'}>Usuários</a>
+                <a onClick={() => (window.location.href = '/admin/users')}>
+                  Usuários
+                </a>
               </li>
               <li>
                 <a href="">Cursos</a>
@@ -87,4 +89,4 @@ const adminCourses = () => {
   )
 }
 
-export default adminCourses;
+export default adminCourses

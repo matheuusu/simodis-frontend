@@ -16,7 +16,9 @@ const adminUsers = () => {
                 <a href="">Usuários</a>
               </li>
               <li>
-                <a onClick={() => window.location.href = '/admin/courses'}>Cursos</a>
+                <a onClick={() => (window.location.href = '/admin/courses')}>
+                  Cursos
+                </a>
               </li>
             </ul>
           </nav>

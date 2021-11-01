@@ -1,7 +1,12 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { logout } from '../../Helpers/AuthHandler'
 
 const Profiles = () => {
+  const handleLogout = () => {
+    window.location.href='/'
+    logout()
+  }
   return (
     <BrowserRouter>
       <div class="profile">
@@ -14,13 +19,13 @@ const Profiles = () => {
             </div>
             <div class="navigation-wrapper">
               <nav>
-                <a onClick={() => window.location.href = '/home'}>Home</a>
+                <a onClick={() => (window.location.href = '/home')}>Home</a>
                 <a href="">Perfil</a>
-                <a onClick={() => window.location.href = '/cursos'}>
-                  Cursos
+                <a onClick={() => (window.location.href = '/cursos')}>Cursos</a>
+                <a onClick={() => (window.location.href = '/rankings')}>
+                  Ranking
                 </a>
-                <a onClick={() => (window.location.href = '/rankings')}>Ranking</a>
-                <a href="">Configurações</a>
+                <a onClick={handleLogout}>Sair</a>
               </nav>
             </div>
             <div class="profile-wrapper">
@@ -46,7 +51,6 @@ const Profiles = () => {
                         <p class="field-title">Nome</p>
                         <p class="field-content">Matheus Silva das Mercês</p>
                       </div>
-                      
                     </div>
                     <div class="field">
                       <p class="field-title">Sobre</p>
