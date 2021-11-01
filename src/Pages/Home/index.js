@@ -4,8 +4,8 @@ import { logout } from '../../Helpers/AuthHandler'
 
 export default function Home() {
   const handleLogout = () => {
-      window.location.href = '/';
-      logout();
+    logout();
+    window.location.href = '/';
   }
 
   return (

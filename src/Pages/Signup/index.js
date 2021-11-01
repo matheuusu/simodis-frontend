@@ -1,41 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
 import { doLogin } from '../../Helpers/AuthHandler'
 
-const Signin = () => {
+const Signup = () => {
   const api = useApi()
 
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [email, setUsuario] = useState('')
   const [senha, setSenha] = useState('')
   const [disable, setDisable] = useState(false)
 
-  const handleFazerLogin = async e => {
+  const handleCriarUser = async e => {
     e.preventDefault()
-    setDisable(true)
+    setDisable(false)
 
-    if (!email || !senha) {
-      alert('Informe suas credenciais!')
-      setDisable(false)
-      return
+    if (!name && !email && !senha) {
+      alert('Insira os dados dos campos!')
     } else {
-      const json = await api.login(email, senha)
+      const json = await api.addUsers(name, email, senha)
 
       if (json.error) {
         alert(JSON.stringify(json.error))
-        setDisable(false)
-        return
-      }
-      if (json.isAdmin) {
-        doLogin(json.token)
-        window.location.href = '/admin/users'
       } else {
-        window.location.href = '/home'
+        setName('')
+        setUsuario('')
+        setSenha('')
+        window.location.href = '/'
       }
-
-      setEmail('')
-      setSenha('')
-      setDisable(false)
     }
   }
 
@@ -45,7 +37,13 @@ const Signin = () => {
         <div id="login-scr" class="content">
           <header>
             <p>
-              <a href="">Simodes</a>
+              <a
+                onClick={() => {
+                  window.location.href = '/'
+                }}
+              >
+                Simodes
+              </a>
             </p>
           </header>
 
@@ -57,10 +55,25 @@ const Signin = () => {
           <main>
             <div class="container">
               <section>
-                <h2>Acessar a conta</h2>
+                <h2>Criar uma conta</h2>
                 <form action="/session" method="POST">
                   <label htmlFor="login-id" className="sr-only">
-                    Insira sua Matrícula
+                    Insira seu nome
+                  </label>
+                  <input
+                    type="text"
+                    id="name-id"
+                    name="name"
+                    placeholder="Insira seu nome"
+                    value={name}
+                    disabled={disable}
+                    onChange={e => {
+                      setName(e.target.value)
+                    }}
+                  />
+
+                  <label htmlFor="login-id" className="sr-only">
+                    Insira seu email
                   </label>
                   <input
                     type="email"
@@ -70,7 +83,7 @@ const Signin = () => {
                     value={email}
                     disabled={disable}
                     onChange={e => {
-                      setEmail(e.target.value)
+                      setUsuario(e.target.value)
                     }}
                   />
 
@@ -89,25 +102,11 @@ const Signin = () => {
                     }}
                   />
 
-                  <button onClick={handleFazerLogin}>
+                  <button onClick={handleCriarUser}>
                     <img src="../images/enter-room.svg" alt="Login" />
-                    Login
+                    Criar conta
                   </button>
                 </form>
-              </section>
-
-              <div className="separator">
-                <div />
-                <div>ou</div>
-                <div />
-              </div>
-
-              <section>
-                <h2>Ainda não possui acesso a plataforma?</h2>
-                <a onClick={() => {window.location.href = '/signup'}} className="button outlined">
-                  <img src="/images/users.svg" alt="Recuperar senha" />
-                  Criar conta
-                </a>
               </section>
             </div>
           </main>
@@ -117,4 +116,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signup

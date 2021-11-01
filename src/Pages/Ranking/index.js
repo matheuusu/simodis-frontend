@@ -4,8 +4,8 @@ import { logout } from '../../Helpers/AuthHandler'
 
 const Rankings = () => {
   const handleLogout = () => {
-    window.location.href='/'
     logout()
+    window.location.href='/'
   }
 
   return (

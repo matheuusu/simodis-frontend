@@ -6,8 +6,8 @@ import { logout } from '../../Helpers/AuthHandler'
 
 const Courses = () => {
   const handleLogout = () => {
-    window.location.href='/'
     logout()
+    window.location.href='/'
   }
   const api = useApi()
   const token = myToken()
@@ -35,6 +35,7 @@ const Courses = () => {
       logout()
       window.location.href('/')
     }
+    
     e.preventDefault()
     setDisable(false)
 

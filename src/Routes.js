@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import SignIn from './Pages/Signin'
+import SignUp from './Pages/Signup'
 import Home from './Pages/Home'
 import Course from './Pages/Course'
 import Profile from './Pages/Profile'
@@ -22,6 +23,10 @@ export default () => {
     <Switch>
       <Route exact path="/">
         <SignIn />
+      </Route>
+
+      <Route exact path="/signup">
+        <SignUp />
       </Route>
 
       <Private exact path="/admin/courses">

@@ -6,7 +6,7 @@ import { doLogin } from '../../Helpers/AuthHandler'
 const Signin = () => {
   const api = useApi()
 
-  const [email, setUsuario] = useState('')
+  const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [disable, setDisable] = useState(false)
 
@@ -16,6 +16,8 @@ const Signin = () => {
 
     if (!email || !senha) {
       alert('Informe suas credenciais!')
+      setDisable(false)
+      return
     } else {
       const json = await api.login(email, senha)
 
@@ -23,10 +25,17 @@ const Signin = () => {
         alert(JSON.stringify(json.error))
         setDisable(false)
         return
-      } else {
+      }
+      if (json.isAdmin) {
         doLogin(json.token)
+        window.location.href = '/admin/users'
+      } else {
         window.location.href = '/home'
       }
+
+      setEmail('')
+      setSenha('')
+      setDisable(false)
     }
   }
 
@@ -61,7 +70,7 @@ const Signin = () => {
                     value={email}
                     disabled={disable}
                     onChange={e => {
-                      setUsuario(e.target.value)
+                      setEmail(e.target.value)
                     }}
                   />
 
@@ -95,7 +104,7 @@ const Signin = () => {
 
               <section>
                 <h2>Ainda não possui acesso a plataforma?</h2>
-                <a href="/recovery-pass" className="button outlined">
+                <a onClick={() => {window.location.href = '/signup'}} className="button outlined">
                   <img src="/images/users.svg" alt="Recuperar senha" />
                   Criar conta
                 </a>

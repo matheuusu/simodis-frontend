@@ -66,11 +66,26 @@ const SimodisAPI = {
         return json;
     },
 
+    addUsers: async (name, email, password) => {
+        const json = await apiFetchPost(
+            '/user/signup',
+            {name, email, password}
+        );
+        return json;
+    },
+
     getCoursers: async () => {
         const json = await apiFetchGet(
             '/course/list'
         );
         return json.coursers;
+    },
+
+    getUsers: async () => {
+        const json = await apiFetchGet(
+            '/user/listusers'
+        );
+        return json.users;
     }
 }
 

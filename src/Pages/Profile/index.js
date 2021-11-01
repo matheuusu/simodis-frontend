@@ -4,8 +4,8 @@ import { logout } from '../../Helpers/AuthHandler'
 
 const Profiles = () => {
   const handleLogout = () => {
-    window.location.href='/'
     logout()
+    window.location.href='/'
   }
   return (
     <BrowserRouter>

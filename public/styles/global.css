@@ -28,7 +28,7 @@ html{
 body{
     display: flex;
     min-height: 100vh;
-    background: var(--light-blue);
+    background: var(--background);
 }
 
 body, button, input, textarea{
