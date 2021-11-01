@@ -11,14 +11,14 @@ const Signup = () => {
   const [senha, setSenha] = useState('')
   const [disable, setDisable] = useState(false)
 
-  const handleCriarUser = async e => {
+  const handleCriarUser = async (e) => {
     e.preventDefault()
     setDisable(false)
 
-    if (!name && !email && !senha) {
+    if (!name || !email || !senha) {
       alert('Insira os dados dos campos!')
     } else {
-      const json = await api.addUsers(name, email, senha)
+      const json = await api.addUsers(name, senha, email, false)
 
       if (json.error) {
         alert(JSON.stringify(json.error))

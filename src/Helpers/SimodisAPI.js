@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import qs from "qs";
 
-const BASEAPI = "http://localhost:4000";
+const BASEAPI = "https://backend-simodis.herokuapp.com";
 
 const apiFetchPost = async (endpoint, body) => {
     if(!body.token){
@@ -66,10 +66,10 @@ const SimodisAPI = {
         return json;
     },
 
-    addUsers: async (name, email, password) => {
+    addUsers: async (name, password, email, isAdmin) => {
         const json = await apiFetchPost(
             '/user/signup',
-            {name, email, password}
+            {name, password, email, isAdmin}
         );
         return json;
     },
