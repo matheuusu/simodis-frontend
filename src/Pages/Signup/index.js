@@ -11,23 +11,27 @@ const Signup = () => {
   const [senha, setSenha] = useState('')
   const [disable, setDisable] = useState(false)
 
-  const handleCriarUser = async (e) => {
+  const handleCriarUser = async e => {
     e.preventDefault()
     setDisable(false)
 
     if (!name || !email || !senha) {
       alert('Insira os dados dos campos!')
     } else {
-      const json = await api.addUsers(name, senha, email, false)
+      const json = await api.createUser(name, email, senha, false)
 
       if (json.error) {
         alert(JSON.stringify(json.error))
+        return
       } else {
-        setName('')
-        setUsuario('')
-        setSenha('')
-        window.location.href = '/'
+        doLogin(json.token)
+        window.location.href = '/home'
       }
+
+      setName('')
+      setUsuario('')
+      setSenha('')
+      setDisable(false)
     }
   }
 
@@ -101,6 +105,8 @@ const Signup = () => {
                       setSenha(e.target.value)
                     }}
                   />
+
+                  
 
                   <button onClick={handleCriarUser}>
                     <img src="../images/enter-room.svg" alt="Login" />
