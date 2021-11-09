@@ -1,7 +1,13 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { logout } from '../../Helpers/AuthHandler'
 
 const adminUsers = () => {
+  const handleLogout = () => {
+    logout()
+    window.location.href = '/'
+  }
+
   return (
     <BrowserRouter>
       <div id="admin-users">
@@ -10,7 +16,7 @@ const adminUsers = () => {
           <nav>
             <ul>
               <li>
-                <a href="">Home</a>
+                <a href="">Inicio</a>
               </li>
               <li>
                 <a href="">Usuários</a>
@@ -19,6 +25,9 @@ const adminUsers = () => {
                 <a onClick={() => (window.location.href = '/admin/courses')}>
                   Cursos
                 </a>
+              </li>
+              <li>
+                <a onClick={handleLogout}>Sair</a>
               </li>
             </ul>
           </nav>

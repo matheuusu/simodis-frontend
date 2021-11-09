@@ -26,12 +26,16 @@ const Signin = () => {
         setDisable(false)
         return
       }
-      if (json.isAdmin) {
+
+
+      
+      if (!json.isAdmin == false) {
         doLogin(json.token)
         window.location.href = '/admin/users'
-      } else {
+      } else if(!json.isAdmin){
         window.location.href = '/home'
       }
+
 
       setEmail('')
       setSenha('')

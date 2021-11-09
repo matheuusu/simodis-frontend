@@ -48,10 +48,10 @@ ul {
 }
 
 #admin-users #header .profile-wrapper .profile {
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 6rem;
-  background: url('https://github.com/matheuusu.png');
+  background: url('https://github.com/carlosexsantos.png');
   background-size: cover;
 }
 

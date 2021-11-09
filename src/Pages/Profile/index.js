@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { logout } from '../../Helpers/AuthHandler'
+import useApi from '../../Helpers/SimodisAPI'
+import { myToken } from '../../Helpers/AuthHandler'
 
 const Profiles = () => {
   const handleLogout = () => {
     logout()
     window.location.href='/'
   }
+  
+  const [user, setUser] = useState({})
+  
+  const api = useApi();
+  const token = myToken()
+
+  useEffect(() => {
+    const getUserInfo = async (token) => {
+      const userInfo = await api.getUser(token);
+      setUser(userInfo);
+    }
+    getUserInfo(token);
+  }, []);
+
   return (
     <BrowserRouter>
       <div class="profile">
@@ -42,14 +58,14 @@ const Profiles = () => {
                     <div class="image-wrapper">
                       <div class="user-image"></div>
                     </div>
-                    <h2>Matheus Silva das Mercês</h2>
+                    <h2>{user.name}</h2>
                     <div class="profile-button">Editar Perfil</div>
                   </div>
                   <div class="user-infor">
                     <div class="field-wrapper">
                       <div class="field">
                         <p class="field-title">Nome</p>
-                        <p class="field-content">Matheus Silva das Mercês</p>
+                        <p class="field-content">{user.name}</p>
                       </div>
                     </div>
                     <div class="field">

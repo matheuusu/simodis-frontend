@@ -19,6 +19,6 @@ export const myToken = () => {
     return(myToken);
 }
 
-export const logout = (token) => {
-    Cookies.remove('token', token);
+export const logout = () => {
+    Cookies.remove('token');
 }

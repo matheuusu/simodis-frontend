@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { logout } from '../../Helpers/AuthHandler'
+import useApi from '../../Helpers/SimodisAPI'
+import { myToken } from '../../Helpers/AuthHandler'
 
 export default function Home() {
   const handleLogout = () => {
     logout();
     window.location.href = '/';
   }
+  
+  const [user, setUser] = useState({})
+  
+  const api = useApi();
+  const token = myToken()
+
+  useEffect(() => {
+    const getUserInfo = async (token) => {
+      const userInfo = await api.getUser(token);
+      setUser(userInfo);
+    }
+    getUserInfo(token);
+  }, []);
 
   return (
     <BrowserRouter>
@@ -39,7 +54,7 @@ export default function Home() {
               <div class="main-content">
                 <div class="wel-wrapper">
                   <div class="wel-content">
-                    <h1>Olá, Matheus</h1>
+                    <h1>Olá, {user.name}</h1>
                     <div class="wel-text">
                       <span>Que bom que Você esta aqui.</span>
                       <span>Continue aprendendo, retorne de onde parou.</span>

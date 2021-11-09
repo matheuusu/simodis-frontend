@@ -6,9 +6,10 @@ import { logout } from '../../Helpers/AuthHandler'
 
 const Courses = () => {
   const handleLogout = () => {
-    logout()
-    window.location.href='/'
+    logout();
+    window.location.href='/';
   }
+  
   const api = useApi()
   const token = myToken()
 

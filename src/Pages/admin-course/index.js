@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import useApi from '../../Helpers/SimodisAPI'
+import { myToken } from '../../Helpers/AuthHandler'
+import { logout } from '../../Helpers/AuthHandler'
 
 const adminCourses = () => {
+  const handleLogout = () => {
+    logout()
+    window.location.href = '/'
+  }
+
   return (
     <BrowserRouter>
       <div id="admin-course">
@@ -10,7 +18,7 @@ const adminCourses = () => {
           <nav>
             <ul>
               <li>
-                <a href="">Home</a>
+                <a href="">Inicio</a>
               </li>
               <li>
                 <a onClick={() => (window.location.href = '/admin/users')}>
@@ -19,6 +27,9 @@ const adminCourses = () => {
               </li>
               <li>
                 <a href="">Cursos</a>
+              </li>
+              <li>
+                <a onClick={handleLogout}>Sair</a>
               </li>
             </ul>
           </nav>
