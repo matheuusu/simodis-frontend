@@ -8,6 +8,7 @@ import Profile from './Pages/Profile'
 import Ranking from './Pages/Ranking'
 import AdminCourse from './Pages/admin-course'
 import AdminUser from './Pages/admin-user'
+import Recovery from './Pages/Recovery'
 
 import { isLogged } from './Helpers/AuthHandler'
 
@@ -29,10 +30,14 @@ export default () => {
         <SignUp />
       </Route>
 
+      <Route exact path="/recovery">
+        <Recovery />
+      </Route>
+
       <Private exact path="/admin/courses">
         <AdminCourse />
       </Private>
-      
+
       <Private exact path="/admin/users">
         <AdminUser />
       </Private>

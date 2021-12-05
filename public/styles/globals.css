@@ -7,16 +7,12 @@
 }
 
 html {
-  --header-height: 8rem;
-
-  /* colors */
   --black: #0d114f;
   --white: #fafafa;
   --red: #e83f5b;
   --light-blue: #e0ecff;
   --blue: #3485ff;
   --background: #f6faff;
-  --border: #205078;
   --overlay: #040911;
   --icons-details: #a5b0c1;
 
@@ -29,9 +25,7 @@ html {
   font-size: 62.5%; /* 10px */
 }
 
-body {
-  background: var(--background);
-}
+
 
 body,
 button,
@@ -139,16 +133,4 @@ button,
   color: var(--black);
   font-size: clamp(20px, 5vw, 4rem);
   font-weight: 700;
-}
-
-/* [ Logo ] */
-.logo {
-  font: 700 3.5rem 'Poppins', sans-serif;
-  color: var(--grey-dark);
-}
-
-.title {
-  font: 700 3rem 'Poppins', sans-serif;
-  color: var(--grey-dark);
-  -webkit-font-smoothing: auto;
 }

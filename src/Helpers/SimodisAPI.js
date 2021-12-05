@@ -80,13 +80,14 @@ const SimodisAPI = {
   },
 
   getUser: async (token) => {
-    const json = await apiFetchGet(
-      '/user/info',
-      {token}
-    );
-    return json;
+    const json = await apiFetchGet('/user/info', { token })
+    return json
   },
 
+  getCourseGrade: async (token) => {
+    const json = await apiFetchGet('/course/mycourse', {token})
+    return json.coursersAndGrades
+  }
 }
 
 export default () => SimodisAPI

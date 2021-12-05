@@ -6,10 +6,10 @@ import { logout } from '../../Helpers/AuthHandler'
 
 const Courses = () => {
   const handleLogout = () => {
-    logout();
-    window.location.href='/';
+    logout()
+    window.location.href = '/'
   }
-  
+
   const api = useApi()
   const token = myToken()
 
@@ -36,7 +36,7 @@ const Courses = () => {
       logout()
       window.location.href('/')
     }
-    
+
     e.preventDefault()
     setDisable(false)
 
@@ -59,56 +59,66 @@ const Courses = () => {
 
   return (
     <BrowserRouter>
-      <div class="courses">
-        <div class="content">
-          <header>
-            <div class="logo-wrapper">
-              <h1>
-                <a>Simodes</a>
-              </h1>
+      <div id="courses">
+        <header id="header">
+          <nav class="container">
+            <h1>
+              <a class="logo" href="">
+                Simodes
+              </a>
+            </h1>
+            <div class="menu">
+              <ul>
+                <li>
+                  <a onClick={() => (window.location.href = '/home')}>Inicio</a>
+                </li>
+                <li>
+                  <a onClick={() => (window.location.href = '/perfil')}>
+                    Perfil
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="isSelected"
+                    onClick={() => (window.location.href = '/cursos')}
+                  >
+                    Cursos
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => (window.location.href = '/rankings')}>
+                    Ranking
+                  </a>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Sair</a>
+                </li>
+              </ul>
             </div>
-            <div class="navigation-wrapper">
-              <nav>
-                <a onClick={() => (window.location.href = '/home')}>Home</a>
-                <a onClick={() => (window.location.href = '/perfil')}>Perfil</a>
-                <a>Cursos</a>
-                <a onClick={() => (window.location.href = '/rankings')}>
-                  Ranking
-                </a>
-                <a onClick={handleLogout}>Sair</a>
-              </nav>
-            </div>
-            <div class="profile-wrapper">
-              <div class="profile"></div>
-            </div>
-          </header>
 
-          <main>
-            <div class="main-wrapper">
-              <div class="main-content">
-                <div class="course-wrapper">
-                  <div class="course-title">
-                    <h1>Cursos disponíveis</h1>
-                  </div>
+            <div class="profile"></div>
+          </nav>
+        </header>
 
-                  <div class="courses-content">
-                    <section>
-                      {coursers.map((item, index) => {
-                        return (
-                          <a class="courses">
-                            <div class="course-icon">icon</div>
-                            <h1>{item.name}</h1>
-                            <span>{item.description}</span>
-                          </a>
-                        )
-                      })}
-                    </section>
-                  </div>
-                </div>
+        <main>
+          <section class="section" id="course">
+            <div class="container">
+              <h1>Cursos disponíveis</h1>
+              <div class="courses-wrapp">
+                {coursers.map((item, index) => {
+                  return (
+                    <div href="" class="course">
+                      <h2>{item.name}</h2>
+                      <p>{item.description}</p>
+
+                      <div class="button">Entrar</div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
-          </main>
-        </div>
+          </section>
+        </main>
 
         {/* <!----- MODAL ------> */}
         {mostrarModal ? (

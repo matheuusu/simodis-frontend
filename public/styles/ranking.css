@@ -1,174 +1,171 @@
+/* [ Restyle ] ////////////////////////////////// */
 ul {
   list-style: none;
 }
-/* [Header] ///////////////////////////////////////////////*/
-#rankings {
-  width: 100%;
-}
-#rankings .content header {
-  background: #fff;
-  height: 8rem;
-  width: 100%;
-  padding: 0 5rem;
 
+/* [ Layout ] /////////////////////////////////// */
+.container {
+  margin: 0 5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+main {
+  margin-top: calc(var(--header-height) + 6rem);
+}
+
+.bar {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(315deg, #3485ff 0%, #ffffff 74%);
+}
+
+.divider {
+  width: 1px;
+  background: var(--grey-blue);
+}
+
+/* [ Header ] /////////////////////////////////// */
+#header {
+  border-bottom: 1px solid var(--grey-light);
+  margin-bottom: 2rem;
   display: flex;
-  align-items: center;
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--white);
+}
+
+/* [ Navigation ] */
+nav {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-#rankings .content header .logo-wrapper h1 a {
-  font-size: 3.5rem;
-  color: var(--blue);
+nav ul {
+  display: flex;
+  gap: 2rem;
 }
 
-#rankings .content header .navigation-wrapper nav a {
-  padding: 0 2rem;
-  color: var(--blue);
+nav ul li a {
+  color: var(--grey-dark);
   font-weight: 700;
+  transition: color 0.2s;
+  position: relative;
 }
 
-#rankings .content header .profile-wrapper {
-  padding: 0.2rem;
-  border: 0.3rem solid var(--blue);
-  border-radius: 6rem;
+nav ul li a:hover {
+  color: var(--blue);
 }
 
-#rankings .content header .profile-wrapper .profile {
-  clip-path: circle();
-  height: 6rem;
+nav ul li a::after {
+  content: '';
+  width: 100%;
+  height: 0px;
+  background: var(--blue);
+
+  position: absolute;
+  left: 0;
+  bottom: -3rem;
+
+  transition: height 0.3s;
+}
+
+nav ul li a:hover::after {
+  height: 2px;
+}
+
+nav ul li a.isSelected::after {
+  height: 2px;
+}
+
+nav ul li a.isSelected {
+  color: var(--blue);
+}
+
+/* [ Profile ] */
+.profile {
   width: 6rem;
+  height: 6rem;
 
-  background: var(--grey-dark) url('https://github.com/carlosexsantos.png');
+  background: url('https://github.com/matheuusu.png');
+  background-position: center center;
   background-size: cover;
+  background-clip: content-box;
+  border-radius: 100%;
+
+  padding: 2px;
+  border: 2px solid var(--grey-blue);
+  cursor: pointer;
 }
 
-/* [ main ] ///////////////////////////////////// */
-
-#rankings .content main .main-wrapper {
-  background: var(--background);
-  margin-top: 0.1rem;
-  height: 100vh;
+/* [ Main ] ///////////////////////////////////// */
+#ranking {
+  overflow: hidden;
 }
 
-#rankings .content main .main-wrapper .main-content {
-  width: 85%;
+#ranking .container {
+  width: 75%;
   margin: 0 auto;
 }
 
-#rankings nav {
-  padding-top: 3rem;
-}
-
-#rankings nav ul{
-  display: inline-flex;
-  padding: 1.5rem 0;
-  background: #fff;
-  border: 1px solid var(--grey-light);
-  border-radius: .4rem;
-  margin-left: 2rem;
-}
-
-#rankings nav ul li {
-  margin: 0 2rem;
-  font-size: 2rem;
+#ranking h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
   color: var(--grey-dark);
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0 0 .5rem 0;
 }
 
-#rankings nav ul li:nth-child(1) {
-  border-bottom: .2rem solid var(--grey-dark);
-  
-}
-
-#rankings .table-wrapper {
-  margin-top: 3rem;
-}
-
-#rankings table {
-  margin: 0 2rem;
-}
-
-#rankings thead {
-  display: table-header-group;
-  vertical-align: middle;
-}
-
-#rankings table {
+/* [ table ] */
+#data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
   color: var(--grey-dark);
 }
 
-#rankings table thead th {
-  background: white;
+table thead tr th:first-child,
+table tbody tr td:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
 
-  font-weight: normal;
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+table thead th {
+  background: var(--white);
+
+  font-weight: 700;
   padding: 1rem 2rem;
 
   text-align: left;
 }
-#rankings table thead tr th:first-child, 
-#rankings table tbody tr td:first-child
-{
-    border-radius: 0.25rem 0 0 0.25rem;
+
+table thead,
+table tbody {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
-#rankings table thead tr th:last-child, 
-#rankings table tbody tr td:last-child{
-    border-radius: 0 0.25rem 0.25rem 0;
+table tbody tr {
+  opacity: 0.7;
 }
 
-#rankings table tbody tr {
-  opacity: 0.7
+table tbody tr:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
-#rankings table tbody tr:hover {
-  opacity: 1
-}
-
-#rankings table tbody td {
-  background:white;
+table tbody td {
+  background: var(--white);
   padding: 1rem 2rem;
-}
-
-#rankings td.description {
-  color: var(--dark-blue);
-}
-
-#rankings td.income {
-  color: #12a454;
-}
-
-#rankings td.expense {
-  color: #e92929;
-}
-
-/* profile */
-#rankings .profile-wrapper {
-  padding: .2rem;
-  border: .3rem solid var(--grey-light);
-  border-radius: 6rem;
-  margin: 0 2rem 0 0;
-}
-
-#rankings .profile-wrapper .profile {
-  clip-path: circle();
-  height: 6rem;
-  width: 6rem;
-
-  background: var(--grey-dark) url('https://github.com/matheuusu.png');
-  background-size: cover;
-}
-
-#rankings .profile-wrapper #julio {
-  background: var(--grey-dark) url('https://github.com/lionev.png');
-  background-size: cover;
-
-}
-
-#rankings .flex-aqui {
-  display: flex;
-  align-items: center;
 }

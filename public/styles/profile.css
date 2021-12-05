@@ -1,132 +1,250 @@
-.profile .content header {
-  background: #fff;
-  height: 8rem;
+/* [ Restyle ] ////////////////////////////////// */
+#profiles ul {
+  list-style: none;
+}
+
+/* [ Layout ] /////////////////////////////////// */
+#profiles .container {
+  margin: 0 5rem;
+}
+
+#profiles .grid {
+  display: grid;
+  gap: 2rem;
+}
+
+#profiles main {
+  margin-top: calc(var(--header-height) + 6rem);
+}
+
+#profiles .bar {
   width: 100%;
-  padding: 0 5rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  border-bottom: .2rem solid var(--grey-light);
-}
-
-.profile .content header .logo-wrapper h1 a {
-  font-size: 3.5rem;
-  color: var(--blue);
-}
-
-.profile .content header .navigation-wrapper nav a {
-  padding: 0 2rem;
-  color: var(--blue);
-  font-weight: 700;
-}
-
-.profile .content header .profile-wrapper {
-  padding: 0.2rem;
-  border: 0.3rem solid var(--blue);
-  border-radius: 6rem;
-}
-
-.profile .content header .profile-wrapper .profile {
-  clip-path: circle();
-  height: 6rem;
-  width: 6rem;
-
-  background: var(--grey-dark) url('https://github.com/carlosexsantos.png');
-  background-size: cover;
-}
-
-/* [Main] /////////////////////////////////////////////////*/
-
-.profile .content main .main-wrapper {
-  margin: 0 auto;
-  width: 70%;
-  height: 100vh;
-}
-
-.profile .content main .main-wrapper .profile-wrapper {
-  margin-top: 5rem;
-  background: #fff;
-}
-
-.profile .content main .main-wrapper .profile-wrapper .profile-bar {
-  background: var(--blue);
-  border-radius: 0.6rem 0.6rem 0rem 0;
   height: 3.5rem;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(315deg, #3485ff 0%, #ffffff 74%);
 }
 
-.profile .content main .main-wrapper .profile-wrapper .profile-content {
-  display: flex;
-  border: .2rem solid var(--grey-light);
-  border-top: none;
-  height: 40rem;
+#profiles .divider {
+  width: 1px;
+  background: var(--grey-blue);
 }
 
-.profile .main-wrapper .profile-wrapper .profile-content .profile-user {
-  border-right: .1rem solid var(--grey-blue);
-  padding: 1.5rem;
-  color: var(--grey-dark);
-  margin: 1rem 0;
-  min-width: 34rem;
+#profiles {
+  width: 100%;
+}
 
+/* [ Header ] /////////////////////////////////// */
+#profiles #header {
+  border-bottom: 1px solid var(--grey-light);
+  margin-bottom: 2rem;
   display: flex;
-  flex-direction: column;
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--white);
+}
+
+/* [ Navigation ] */
+#profiles nav {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.profile .content main .main-wrapper .profile-wrapper .profile-content .image-wrapper {
-  padding: 0.2rem;
-  border: 0.3rem solid var(--blue);
-  border-radius: 12rem;
-  width: 19rem;
-  margin-bottom: 1rem;
+#profiles nav ul {
+  display: flex;
+  gap: 2rem;
 }
 
-.profile .profile-wrapper .profile-content .image-wrapper .user-image {
-  clip-path: circle();
-  height: 18rem;
-  width: 18rem;
-
-  background: var(--grey-dark) url('https://github.com/matheuusu.png');
-  background-size: cover;
-}
-
-.profile .profile-wrapper .profile-content .profile-user .profile-button {
-  background: var(--blue);
-  color: var(--white);
-  padding: 1rem 3rem;
-  border-radius: .6rem;
-  margin-top: 3rem;
+#profiles nav ul li a {
+  color: var(--grey-dark);
   font-weight: 700;
+  transition: color 0.2s;
+  position: relative;
+}
+
+#profiles nav ul li a:hover {
+  color: var(--blue);
+}
+
+#profiles nav ul li a::after {
+  content: '';
+  width: 100%;
+  height: 0px;
+  background: var(--blue);
+
+  position: absolute;
+  left: 0;
+  bottom: -3rem;
+
+  transition: height 0.3s;
+}
+
+#profiles nav ul li a:hover::after {
+  height: 2px;
+}
+
+#profiles nav ul li a.isSelected::after {
+  height: 2px;
+}
+
+#profiles nav ul li a.isSelected {
+  color: var(--blue);
+}
+
+/* [ Profile ] */
+#profiles .profile {
+  width: 6rem;
+  height: 6rem;
+
+  background: url('https://github.com/matheuusu.png');
+  background-position: center center;
+  background-size: cover;
+  background-clip: content-box;
+  border-radius: 100%;
+
+  padding: 2px;
+  border: 2px solid var(--grey-blue);
   cursor: pointer;
 }
 
-.profile .profile-wrapper .profile-content .user-infor {
-  padding: 2rem;
+/* [ Main ] ///////////////////////////////////// */
+#profiles #profile {
+  overflow: hidden;
+}
+
+#profiles #profile .container {
+  width: 75%;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 3rem;
+}
+
+#profiles #profile .wrapper {
+  border: 2px solid var(--grey-light);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.11);
+  position: relative;
+}
+
+/* [ Main Profile-wrapper ] */
+#profiles .profile-wrapper {
+  height: 32rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  padding: 2rem 0;
 }
 
-.profile .field-wrapper {
-  display: flex;
+#profiles .icon-pencil {
+  color: var(--grey-dark);
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
 
-.profile .field-wrapper .field {
-  margin-right: 5rem;
-}
-
-.profile .field {
-  margin-bottom: 2.5rem;
-  font-size: 1.8rem;
-}
-
-.profile .field .field-title {
+#profiles .icon-pencil:hover {
   color: var(--grey-blue);
+  cursor: pointer;
 }
 
-.profile .field .field-content {
+#profiles .profile-wrapper .profile {
+  width: 15rem;
+  height: 15rem;
+
+  border: 3px solid var(--grey-blue);
+  padding: 0.3rem;
+
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+#profiles .profile-wrapper .title {
+  text-align: center;
+}
+
+/* [Main Content-Wrapper] */
+#profiles .content-wrapper {
+  padding: 2rem;
   color: var(--grey-dark);
 }
 
+/* [ Modal ] //////////////////////////////////// */
+#profiles .modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 999;
+}
+
+#profiles .modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#profiles .modal {
+  background: var(--white);
+  padding: 2.4rem;
+
+  position: relative;
+  z-index: 1;
+
+  width: 50%;
+}
+
+/* [ Form ] */
+#profiles .modal h2 {
+  margin-top: 0;
+  color: var(--grey-dark);
+}
+
+#profiles input {
+  border-radius: 0.2rem;
+  padding: 0.8rem;
+  outline: none;
+  width: 100%;
+}
+
+#profiles input.input-name {
+  border: 0.2rem solid var(--grey-blue);
+}
+
+#profiles .input-group {
+  margin-top: 0.8rem;
+}
+
+#profiles .input-group .help {
+  opacity: 0.4;
+}
+
+#profiles .input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profiles .input-group.actions .button,
+#profiles .input-group.actions button {
+  width: 48%;
+}

@@ -1,110 +1,152 @@
-/* [Header] ///////////////////////////////////////////////*/
-.courses {
-    width: 100%;
-}
-.courses .content header {
-    background: #fff;
-    height: 8rem;
-    width: 100%;
-    padding: 0 5rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* [ Restyle ] ////////////////////////////////// */
+ul {
+  list-style: none;
 }
 
-.courses .content header .logo-wrapper h1 a {
-    font-size: 3.5rem;
-    color: var(--blue);
+/* [ Layout ] /////////////////////////////////// */
+#courses .container {
+  margin: 0 5rem;
 }
 
-.courses .content header .navigation-wrapper nav a {
-    padding: 0 2rem;
-    color: var(--blue);
-    font-weight: 700;
+#courses .grid {
+  display: grid;
+  gap: 2rem;
 }
 
-.courses .content header .profile-wrapper {
-    padding: .2rem;
-    border: .3rem solid var(--blue);
-    border-radius: 6rem;
+#courses main {
+  margin-top: calc(var(--header-height) + 6rem);
 }
 
-.courses .content header .profile-wrapper .profile {
-    clip-path: circle();
-    height: 6rem;
-    width: 6rem;
-
-    background: var(--grey-dark) url('https://github.com/carlosexsantos.png');
-    background-size: cover;
+#courses .gradients {
+  padding: 0.3rem;
+  border-radius: 5px;
+  background: #ffffff;
+  background-image: linear-gradient(315deg, rgb(32 80 120) 0%, #ffffff 33%);
 }
 
-/* [Main ] ////////////////////////////////////////////////*/
-
-.courses .content main .main-wrapper {
-    background: var(--background);
-    margin-top: .10rem;
-    height: 100vh;
+#courses {
+  width: 100%;
 }
 
-.courses .content main .main-wrapper .main-content {
-    width: 85%;
-    margin: 0 auto;
+/* [ Header ] /////////////////////////////////// */
+#courses #header {
+  border-bottom: 1px solid var(--grey-light);
+  margin-bottom: 2rem;
+  display: flex;
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--white);
 }
 
-.courses .content main .main-wrapper .main-content .course-wrapper {
-    padding: 1rem;
+/* [ Navigation ] */
+#courses nav {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.courses .content main .main-wrapper .main-content .course-wrapper .course-title{
-    margin: 5rem 0 2rem 0;
-    color: var(--grey-dark);
-
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#courses nav ul {
+  display: flex;
+  gap: 2rem;
 }
 
-.courses .course-title .course-action div {
-    background: var(--blue);
-    padding: 1rem 2rem;
-    border-radius: .5rem;
-    color: var(--white);
-    font-weight: 700;
-    cursor: pointer;
+#courses nav ul li a {
+  color: var(--grey-dark);
+  font-weight: 700;
+  transition: color 0.2s;
+  position: relative;
 }
 
-.courses .content main .main-wrapper .main-content .course-wrapper .courses-content section {
-    display: flex;
-    justify-content: space-between;
+#courses nav ul li a:hover {
+  color: var(--blue);
 }
 
-.courses .content main .main-wrapper .main-content .course-wrapper .courses {
-    display: flex;
-    flex-direction: column;
-    width: 28rem;
-    height: 38rem;
-    border: .2rem solid var(--grey-light);
-    border-bottom: .3rem solid var(--grey-blue);
-    border-radius: .5rem .5rem 0 0;
-    background: #fff;
-    padding: 3.2rem 3.2rem 6.4rem;
-    cursor: pointer;
+#courses nav ul li a::after {
+  content: '';
+  width: 100%;
+  height: 0px;
+  background: var(--blue);
+
+  position: absolute;
+  left: 0;
+  bottom: -3rem;
+
+  transition: height 0.3s;
 }
 
-.courses .content main .main-wrapper .main-content .course-wrapper .courses .course-icon {
-    width: 8rem;
-    height: 8rem;
-    border-radius: .5rem;
-    background: var(--blue);
-    line-height: 8rem;
-    text-align: center;
-    color: #fff;
+#courses nav ul li a:hover::after {
+  height: 2px;
 }
 
-.courses .content main .main-wrapper .main-content .course-wrapper .courses h1 {
-    color: var(--grey-dark);
-    margin: 4rem 0;
+#courses nav ul li a.isSelected::after {
+  height: 2px;
 }
 
+#courses nav ul li a.isSelected {
+  color: var(--blue);
+}
+
+/* [ Profile ] */
+#courses .profile {
+  width: 6rem;
+  height: 6rem;
+
+  background: url('https://github.com/matheuusu.png');
+  background-position: center center;
+  background-size: cover;
+  background-clip: content-box;
+  border-radius: 100%;
+
+  padding: 2px;
+  border: 2px solid var(--grey-blue);
+  cursor: pointer;
+}
+
+/* [ Main ] ///////////////////////////////////// */
+#courses #course {
+  overflow: hidden;
+}
+
+#courses #course .container {
+  width: 80.4%;
+  margin: 0 auto;
+}
+
+#courses #course h1 {
+  font-size: 3rem;
+  color: var(--grey-dark);
+}
+
+#courses .courses-wrapp {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+#courses .course {
+  width: 28rem;
+  height: 38rem;
+  padding: 2rem;
+
+  background: var(--white);
+  color: var(--grey-dark);
+  border: 2px solid var(--grey-light);
+  border-bottom: 3px solid var(--grey-blue);
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}

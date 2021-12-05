@@ -1,84 +1,101 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { logout } from '../../Helpers/AuthHandler'
+import useApi from '../../Helpers/SimodisAPI'
+import { myToken } from '../../Helpers/AuthHandler'
 
 const Rankings = () => {
   const handleLogout = () => {
     logout()
-    window.location.href='/'
+    window.location.href = '/'
   }
+
+  const [courseGrade, setCourseGrade] = useState({})
+
+  const api = useApi()
+  const token = myToken()
+
+  useEffect(() => {
+    const getCourseGrade = async token => {
+      const grades = await api.getCourseGrade(token)
+      setCourseGrade(grades)
+    }
+    getCourseGrade(token)
+  }, [])
 
   return (
     <BrowserRouter>
-      <div id="rankings">
-        <div class="content">
-          <header>
-            <div class="logo-wrapper">
-              <h1>
-                <a>Simodes</a>
-              </h1>
-            </div>
-            <div class="navigation-wrapper">
-              <nav>
-                <a onClick={() => (window.location.href = '/home')}>Home</a>
+      <header id="header">
+        <nav class="container">
+          <h1>
+            <a class="logo" href="">
+              Simodes
+            </a>
+          </h1>
+          <div class="menu">
+            <ul>
+              <li>
+                <a onClick={() => (window.location.href = '/home')}>Inicio</a>
+              </li>
+              <li>
                 <a onClick={() => (window.location.href = '/perfil')}>Perfil</a>
+              </li>
+              <li>
                 <a onClick={() => (window.location.href = '/cursos')}>Cursos</a>
-                <a>Ranking</a>
+              </li>
+              <li>
+                <a
+                  class="isSelected"
+                  onClick={() => (window.location.href = '/rankings')}
+                >
+                  Ranking
+                </a>
+              </li>
+              <li>
                 <a onClick={handleLogout}>Sair</a>
-              </nav>
-            </div>
-            <div class="profile-wrapper">
-              <div class="profile"></div>
-            </div>
-          </header>
+              </li>
+            </ul>
+          </div>
 
-          <main>
-            <div class="main-wrapper">
-              <div class="main-content">
-                <nav>
-                  <ul>
-                    <li>Ranking</li>
-                    <li>Ranking geral</li>
-                  </ul>
-                </nav>
-                <div class="table-wrapper">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>Cursos</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1º</td>
-                        <td class="flex-aqui">
-                          <div class="profile-wrapper">
-                            <div class="profile"></div>
-                          </div>
-                          Matheus Silva
-                        </td>
-                        <td>Programação Orientada a Objetos</td>
-                      </tr>
-                      <tr>
-                        <td>2º</td>
-                        <td class="flex-aqui">
-                          <div class="profile-wrapper">
-                            <div id="julio" class="profile"></div>
-                          </div>
-                          Julio
-                        </td>
-                        <td>Logica de programação</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-      </div>
+          <div class="profile"></div>
+        </nav>
+      </header>
+
+      <main>
+        <section class="section" id="ranking">
+          <div class="container">
+            <h1>Ranking</h1>
+
+            <table id="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Pontuação</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>1º</td>
+                  <td>Matheus Silva</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>2º</td>
+                  <td>Yano Victor</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td>3º</td>
+                  <td>Luiz Felipe</td>
+                  <td>14</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </BrowserRouter>
   )
 }

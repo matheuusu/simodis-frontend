@@ -27,15 +27,15 @@ const Signin = () => {
         return
       }
 
-
-      
-      if (!json.isAdmin == false) {
+      if (json.isAdmin) {
+        alert(json.isAdmin)
         doLogin(json.token)
         window.location.href = '/admin/users'
-      } else if(!json.isAdmin){
+      } else {
+        alert(json.isAdmin)
+        doLogin(json.token)
         window.location.href = '/home'
       }
-
 
       setEmail('')
       setSenha('')
@@ -108,9 +108,23 @@ const Signin = () => {
 
               <section>
                 <h2>Ainda não possui acesso a plataforma?</h2>
-                <a onClick={() => {window.location.href = '/signup'}} className="button outlined">
+                <a
+                  onClick={() => {
+                    window.location.href = '/signup'
+                  }}
+                  className="button outlined"
+                >
                   <img src="/images/users.svg" alt="Recuperar senha" />
                   Criar conta
+                </a>
+
+                <a
+                  class="button"
+                  onClick={() => {
+                    window.location.href = '/recovery'
+                  }}
+                >
+                  Recuperar senha
                 </a>
               </section>
             </div>

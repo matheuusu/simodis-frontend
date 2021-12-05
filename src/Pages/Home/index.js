@@ -6,88 +6,122 @@ import { myToken } from '../../Helpers/AuthHandler'
 
 export default function Home() {
   const handleLogout = () => {
-    logout();
-    window.location.href = '/';
+    logout()
+    window.location.href = '/'
   }
-  
+
   const [user, setUser] = useState({})
-  
-  const api = useApi();
+
+  const api = useApi()
   const token = myToken()
 
   useEffect(() => {
-    const getUserInfo = async (token) => {
-      const userInfo = await api.getUser(token);
-      setUser(userInfo);
+    const getUserInfo = async token => {
+      const userInfo = await api.getUser(token)
+      setUser(userInfo)
     }
-    getUserInfo(token);
-  }, []);
+    getUserInfo(token)
+  }, [])
 
   return (
     <BrowserRouter>
       <div class="home-wrapper">
-        <div id="home" class="content">
-          <header>
-            <div class="logo-wrapper">
-              <h1>
-                <a href="">Simodes</a>
-              </h1>
+        <header id="header">
+          <nav class="container">
+            <h1>
+              <a class="logo" href="">
+                Simodes
+              </a>
+            </h1>
+            <div class="menu">
+              <ul>
+                <li>
+                  <a
+                    class="isSelected"
+                    onClick={() => (window.location.href = '/home')}
+                  >
+                    Inicio
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => (window.location.href = '/perfil')}>
+                    Perfil
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => (window.location.href = '/cursos')}>
+                    Cursos
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => (window.location.href = '/rankings')}>
+                    Ranking
+                  </a>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Sair</a>
+                </li>
+              </ul>
             </div>
-            <div class="navigation-wrapper">
-              <nav>
-                <a>Home</a>
-                <a onClick={() => (window.location.href = '/perfil')}>Perfil</a>
-                <a onClick={() => (window.location.href = '/cursos')}>Cursos</a>
-                <a onClick={() => (window.location.href = '/rankings')}>
-                  Ranking
-                </a>
-                <a onClick={handleLogout}>Sair</a>
-              </nav>
-            </div>
-            <div class="profile-wrapper">
-              <div class="profile"></div>
-            </div>
-          </header>
 
-          <main>
-            <div class="main-wrapper">
-              <div class="main-content">
-                <div class="wel-wrapper">
-                  <div class="wel-content">
-                    <h1>Olá, {user.name}</h1>
-                    <div class="wel-text">
-                      <span>Que bom que Você esta aqui.</span>
-                      <span>Continue aprendendo, retorne de onde parou.</span>
+            <div class="profile"></div>
+          </nav>
+        </header>
+
+        <main>
+          <section class="section" id="home">
+            <div class="container">
+              <div class="text">
+                <h2 class="title">Olá, {user.name}</h2>
+                <div class="wel-text">
+                  <p>É bom ter você de volta.</p>
+                  <p>Continue aprendendo, retorne para aula que parou.</p>
+                </div>
+              </div>
+
+              <div class="continue-wrapper">
+                <div class="continue">
+                  <h3>Lógica de programação</h3>
+                </div>
+                <div class="continue">
+                  <h3 class="outlined">continuar aula</h3>
+                  <i class="icon-play2"></i>
+                </div>
+              </div>
+
+              <div class="content">
+                <div class="gradients">
+                  <div class="content-wrapper">
+                    <div class="profile-view"></div>
+                    <div class="box-content">
+                      <h2>Meu perfil</h2>
+                      <a
+                        onClick={() => (window.location.href = '/perfil')}
+                        class="button"
+                      >
+                        VISUALIZAR PERFIL
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                <div class="wel-continue">
-                  <a class="wel-button" href="">
-                    <h2>Programação orientada a objetos</h2>
-                    <div class="button-content">
-                      <span>Continar assistindo</span>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="most-courses">
-                  <h1>Destaques</h1>
-                  <div class="carousel-wrapper owl-carousel owl-theme">
-                    <div class="carousel-items">
-                      <div class="course-icon">icon</div>
-                      <h1>icon</h1>
-                      <span>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Nisi, dolor eligendi deserunt quisquam ducimus.
-                      </span>
+                <div class="gradients">
+                  <div class="content-wrapper">
+                    <div class="box-content">
+                      <h2>Meus Cursos</h2>
+                      <a
+                        onClick={() => (window.location.href = '/cursos')}
+                        class="button"
+                      >
+                        VISUALIZAR CURSOS
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </main>
-        </div>
+          </section>
+        </main>
       </div>
     </BrowserRouter>
   )

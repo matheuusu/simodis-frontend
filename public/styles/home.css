@@ -1,160 +1,215 @@
-/* [Header] ///////////////////////////////////////////////*/
+/* [ Restyle ] ////////////////////////////////// */
+.home-wrapper ul {
+  list-style: none;
+}
+
+/* [ Layout ] /////////////////////////////////// */
 .home-wrapper {
   width: 100%;
 }
 
-.home-wrapper .content header {
-  background: #fff;
-  height: 8rem;
-  width: 100%;
-  padding: 0 5rem;
+.home-wrapper .container {
+  margin: 0 5rem;
+}
 
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.home-wrapper main {
+  margin-top: calc(var(--header-height) + 6rem);
+}
+
+.home-wrapper .gradients {
+  padding: .3rem;
+  border-radius: 5px;
+  background: #ffffff;
+  background-image: linear-gradient(315deg, rgb(32 80 120) 0%, #ffffff 33%);
+}
+
+/* [ Header ] /////////////////////////////////// */
+.home-wrapper #header {
+  border-bottom: 1px solid var(--grey-light);
+  margin-bottom: 2rem;
   display: flex;
-  align-items: center;
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--white);
+}
+
+/* [ Navigation ] */
+.home-wrapper nav {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
   justify-content: space-between;
-
-  border-bottom: 0.2rem solid var(--grey-light);
+  align-items: center;
 }
 
-.home-wrapper .content header .logo-wrapper h1 a {
-  font-size: 3.5rem;
-  color: var(--blue);
+.home-wrapper nav ul {
+  display: flex;
+  gap: 2rem;
 }
 
-.home-wrapper .content header .navigation-wrapper nav a {
-  padding: 0 2rem;
-  color: var(--blue);
+.home-wrapper nav ul li a {
+  color: var(--grey-dark);
   font-weight: 700;
+  transition: color 0.2s;
+  position: relative;
 }
 
-.home-wrapper .content header .profile-wrapper {
-  padding: 0.2rem;
-  border: 0.3rem solid var(--blue);
-  border-radius: 6rem;
+.home-wrapper nav ul li a:hover {
+  color: var(--blue);
 }
 
-.home-wrapper .content header .profile-wrapper .profile {
-  clip-path: circle();
-  height: 6rem;
+.home-wrapper nav ul li a::after {
+  content: '';
+  width: 100%;
+  height: 0px;
+  background: var(--blue);
+
+  position: absolute;
+  left: 0;
+  bottom: -3rem;
+
+  transition: height 0.3s;
+}
+
+.home-wrapper nav ul li a:hover::after {
+  height: 2px;
+}
+
+.home-wrapper nav ul li a.isSelected::after {
+  height: 2px;
+}
+
+.home-wrapper nav ul li a.isSelected {
+  color: var(--blue);
+}
+
+/* [ Profile ] */
+.home-wrapper .profile {
   width: 6rem;
+  height: 6rem;
 
-  background: var(--grey-dark) url('https://github.com/carlosexsantos.png');
+  background: url('https://github.com/carlosexsantos.png');
+  background-position: center center;
   background-size: cover;
+  background-clip: content-box;
+  border-radius: 100%;
+
+  padding: 2px;
+  border: 2px solid var(--grey-blue);
+  cursor: pointer;
 }
 
-/* [Main wrapper] /////////////////////////////////////////*/
-
-.home-wrapper .content main .main-wrapper {
-  background: var(--background);
-  margin-top: 0.1rem;
-  height: 100vh;
+/* [ Main ] ///////////////////////////////////// */
+.home-wrapper #home {
+  overflow: hidden;
 }
 
-.home-wrapper .content main .main-wrapper .main-content {
-  width: 70%;
+.home-wrapper #home .container {
+  width: 75%;
   margin: 0 auto;
 }
 
-.home-wrapper .content main .main-wrapper .main-content .wel-wrapper {
+.home-wrapper .text {
   display: flex;
+  gap: 2rem;
+  margin-bottom: 6.5rem;
 }
 
-.home-wrapper
-  .content
-  main
-  .main-wrapper
-  .main-content
-  .wel-wrapper
-  .wel-content {
-  margin-top: 4rem;
-  display: flex;
-  color: var(--grey-dark);
-}
-
-.home-wrapper
-  .content
-  main
-  .main-wrapper
-  .main-content
-  .wel-wrapper
-  .wel-content
-  .wel-text {
-  display: flex;
-  flex-direction: column;
-  margin-left: 4rem;
+.home-wrapper .text p {
   color: var(--grey-blue);
 }
 
-.home-wrapper .content main .main-wrapper .main-content .wel-continue {
-  margin-top: 4rem;
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
-}
-
-.home-wrapper .content main .main-wrapper .main-content .wel-continue a {
+/* [ Continue Wrapper ] */
+.home-wrapper .continue-wrapper {
   display: flex;
+  -webkit-box-pack: justify;
   justify-content: space-between;
-  padding: 2rem;
-  color: var(--grey-dark);
-  font-size: 2rem;
-  height: 13rem;
+  -webkit-box-align: center;
   align-items: center;
+  padding: 3.2rem;
+  border-radius: 5px;
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #3485ff 0%, #ffffff 74%);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+
+  height: 11.2rem;
 }
 
-.home-wrapper
-  .content
-  main
-  .main-wrapper
-  .main-content
-  .wel-continue
-  a
-  .button-content {
+.home-wrapper .continue-wrapper:hover {
+  cursor: pointer;
+  box-shadow: rgb(32 80 120) 0px 0px 0px 2px inset;
+}
+
+.home-wrapper .continue {
   display: flex;
   align-items: center;
+  gap: 1rem;
 
-  background: var(--blue);
+  color: var(--grey-dark);
+  font-weight: 700;
+}
+
+.home-wrapper .continue h3.outlined {
   color: var(--white);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  opacity: 1;
 }
 
-.button-content:hover {
-  filter: brightness(1.2);
+.home-wrapper .continue i {
+  color: var(--white);
+  font-size: 3.5rem;
 }
 
-.home-wrapper .most-courses {
-  margin-top: 2rem;
+/* [ Content ] */
+.home-wrapper .content {
+  margin-top: 2.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem;
+}
+
+.home-wrapper .content-wrapper {
+  display: flex;
+  gap: 2rem;
+  border-radius: 5px;
+  padding: 3.2rem;
+  height: 100%;
+  background-color: #e6ffff;
+  background-image: linear-gradient(315deg, #e6ffff 0%, #ffffff 33%);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.11);
+}
+
+.home-wrapper .profile-view {
+  width: 14rem;
+  height: 14rem;
+
+  background: url('https://github.com/carlosexsantos.png');
+  background-position: center center;
+  background-size: cover;
+  background-clip: content-box;
+  border-radius: 100%;
+
+  padding: 2px;
+  border: 2px solid var(--grey-blue);
+  cursor: pointer;
+}
+
+.home-wrapper .box-content {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+
   color: var(--grey-dark);
 }
 
-.home-wrapper .content main .main-wrapper .main-content .carousel-wrapper {
-  margin-top: 1rem;
-}
-
-.home-wrapper .carousel-items {
-  background: #fff;
-  height: 30rem;
-  padding: 3.2rem 3.2rem 6.4rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-  border: 0.3rem solid var(--grey-light);
-}
-
-.home-wrapper .carousel-items:hover {
-  border: 0.2rem solid var(--grey-light);
-}
-
-.home-wrapper .carousel-items .course-icon {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 0.5rem;
-  background: var(--blue);
-  line-height: 6rem;
-  text-align: center;
-  color: #fff;
-}
-
-.home-wrapper .carousel-items h1 {
-  margin-top: 1rem;
+.home-wrapper .content-wrapper a.button {
+  padding: 0 2rem;
 }

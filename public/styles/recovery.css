@@ -1,0 +1,70 @@
+/* [ Modal ] //////////////////////////////////// */
+#recovery .modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 999;
+}
+
+#recovery .modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#recovery .modal {
+  background: var(--white);
+  padding: 2.4rem;
+
+  position: relative;
+  z-index: 1;
+
+  width: 50%;
+}
+
+/* [ Form ] */
+#recovery .modal h2 {
+  margin-top: 0;
+  color: var(--grey-dark);
+}
+
+#recovery input {
+  border-radius: 0.2rem;
+  padding: 0.8rem;
+  outline: none;
+  width: 100%;
+}
+
+#recovery input.input-name {
+  border: 0.2rem solid var(--grey-blue);
+}
+
+#recovery .input-group {
+  margin-top: 0.8rem;
+}
+
+#recovery .input-group .help {
+  opacity: 0.4;
+}
+
+#recovery .input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#recovery .input-group.actions .button,
+#recovery .input-group.actions button {
+  width: 48%;
+}
