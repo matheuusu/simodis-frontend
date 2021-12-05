@@ -6,9 +6,7 @@ import { doLogin } from '../../Helpers/AuthHandler'
 const Recovery = () => {
   const api = useApi()
 
-  const [name, setName] = useState('')
-  const [email, setUsuario] = useState('')
-  const [senha, setSenha] = useState('')
+  const [email, setEmail] = useState('')
   const [disable, setDisable] = useState(false)
 
   const [mostrarModal, setMostrarModal] = useState(false)
@@ -16,27 +14,24 @@ const Recovery = () => {
     !mostrarModal ? setMostrarModal(true) : setMostrarModal(false)
   }
 
-  const handleCriarUser = async e => {
+  const handleRecover = async e => {
     e.preventDefault()
     setDisable(false)
 
-    if (!name || !email || !senha) {
-      alert('Insira os dados dos campos!')
+    if (!email) {
+      alert('Insira os dados do curso!')
+      setMostrarModal(false)
+      return
     } else {
-      const json = await api.createUser(name, email, senha, false)
+      const json = await api.getPass(email)
+      alert(email)
 
       if (json.error) {
         alert(JSON.stringify(json.error))
-        return
       } else {
-        doLogin(json.token)
-        window.location.href = '/home'
+        setEmail('')
+        setMostrarModal(true)
       }
-
-      setName('')
-      setUsuario('')
-      setSenha('')
-      setDisable(false)
     }
   }
 
@@ -77,19 +72,14 @@ const Recovery = () => {
                     value={email}
                     disabled={disable}
                     onChange={e => {
-                      setUsuario(e.target.value)
+                      setEmail(e.target.value)
                     }}
                   />
 
-                  <div
-                    class="button"
-                    onClick={() => {
-                      setMostrarModal(true)
-                    }}
-                  >
+                  <button class="button" onClick={handleRecover}>
                     <img src="../images/enter-room.svg" alt="Login" />
                     Enviar
-                  </div>
+                  </button>
                 </form>
               </section>
             </div>

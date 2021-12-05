@@ -65,6 +65,7 @@ ul {
 
 #courses nav ul li a:hover {
   color: var(--blue);
+  cursor: pointer;
 }
 
 #courses nav ul li a::after {

@@ -79,14 +79,21 @@ const SimodisAPI = {
     return json.coursers
   },
 
-  getUser: async (token) => {
+  getUser: async token => {
     const json = await apiFetchGet('/user/info', { token })
     return json
   },
 
-  getCourseGrade: async (token) => {
-    const json = await apiFetchGet('/course/mycourse', {token})
+  getCourseGrade: async token => {
+    const json = await apiFetchGet('/course/mycourse', { token })
     return json.coursersAndGrades
+  },
+
+  getPass: async email => {
+    const json = await apiFetchGet('/user/recoverpassword', {
+      email
+    })
+    return json
   }
 }
 

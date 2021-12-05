@@ -70,6 +70,7 @@
 
 #profiles nav ul li a:hover {
   color: var(--blue);
+  cursor: pointer;
 }
 
 #profiles nav ul li a::after {

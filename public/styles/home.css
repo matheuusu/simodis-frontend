@@ -65,6 +65,7 @@
 
 .home-wrapper nav ul li a:hover {
   color: var(--blue);
+  cursor: pointer;
 }
 
 .home-wrapper nav ul li a::after {
