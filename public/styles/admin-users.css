@@ -171,4 +171,28 @@
   border-radius: 0.25rem;
 
   padding: 0.3rem 1rem;
+  cursor: pointer;
 }
+
+#admin-users .modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--background);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  visibility: visible;
+
+  z-index: 999;
+
+  color: var(--grey-dark);
+}
+
+

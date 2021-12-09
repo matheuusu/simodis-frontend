@@ -10,6 +10,7 @@ import AdminCourse from './Pages/adminCourse'
 import AdminUser from './Pages/adminUser'
 import Recovery from './Pages/Recovery'
 import Question from './Pages/Question'
+import UserInfor from './Pages/adminUserInfor'
 
 import { isLogged } from './Helpers/AuthHandler'
 
@@ -41,6 +42,10 @@ export default () => {
 
       <Private exact path="/admin/users">
         <AdminUser />
+      </Private>
+
+      <Private exact path="/admin/users/infor">
+        <UserInfor />
       </Private>
 
       <Private exact path="/home">
