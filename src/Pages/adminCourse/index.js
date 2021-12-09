@@ -1,13 +1,58 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
 import { myToken } from '../../Helpers/AuthHandler'
 import { logout } from '../../Helpers/AuthHandler'
 
-const adminCourses = () => {
+const AdminCourses = () => {
   const handleLogout = () => {
     logout()
     window.location.href = '/'
+  }
+
+  const api = useApi()
+
+  const [cursoName, setCursoName] = React.useState('')
+  const [descriptions, setDescriptions] = React.useState('')
+  const [coursers, setCoursers] = React.useState([])
+  const [disable, setDisable] = React.useState(false)
+
+  const [mostrarModal, setMostrarModal] = React.useState(false)
+  const handleMostrarModal = () => {
+    !mostrarModal ? setMostrarModal(true) : setMostrarModal(false)
+  }
+
+  React.useEffect(() => {
+    const getListCoursers = async () => {
+      const listCoursers = await api.getCoursers()
+      setCoursers(listCoursers)
+    }
+    getListCoursers()
+  }, [])
+
+  const handleCriarCurso = async e => {
+    const handleLogout = () => {
+      logout()
+      window.location.href('/')
+    }
+
+    e.preventDefault()
+    setDisable(false)
+
+    if (!cursoName && !descriptions) {
+      alert('Insira os dados do curso!')
+      setMostrarModal(false)
+    } else {
+      const json = await api.addCursos(cursoName, descriptions)
+
+      if (json.error) {
+        alert(JSON.stringify(json.error))
+      } else {
+        setCursoName('')
+        setDescriptions('')
+        setMostrarModal(false)
+      }
+    }
   }
 
   return (
@@ -39,9 +84,6 @@ const adminCourses = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="./ranking.html">Ranking</a>
-                </li>
-                <li>
                   <a onClick={handleLogout}>Sair</a>
                 </li>
               </ul>
@@ -54,7 +96,17 @@ const adminCourses = () => {
         <main>
           <section class="section" id="admin-coursers">
             <div class="container">
-              <h1>Lista dos cursos</h1>
+              <div class="course-create">
+                <h1>Lista dos cursos</h1>
+                <div
+                  onClick={() => {
+                    setMostrarModal(true)
+                  }}
+                  class="button"
+                >
+                  criar
+                </div>
+              </div>
 
               <table id="data-table">
                 <thead>
@@ -65,32 +117,80 @@ const adminCourses = () => {
                 </thead>
 
                 <tbody>
-                  <tr>
-                    <td>Lógica de programação</td>
-                    <td>
-                      <a href="">Consultar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Arquitetura de software</td>
-                    <td>
-                      <a href="">Consultar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Programação 1</td>
-                    <td>
-                      <a href="">Consultar</a>
-                    </td>
-                  </tr>
+                  {coursers.map((item, index) => {
+                    return (
+                      <tr>
+                        <td>{item.name}</td>
+                        <td>
+                          <a href="">Consultar</a>
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
           </section>
         </main>
+
+        {/* <!----- MODAL ------> */}
+        {mostrarModal ? (
+          <div class="modal-overlay active">
+            <div class="modal">
+              <h2>Criar Curso</h2>
+              <p>Insira o nome e descrição do curso que deseja criar</p>
+
+              <form method="">
+                <label class="sr-only" for-id="password">
+                  nome do curso
+                </label>
+                <input
+                  type="text"
+                  id="course-name"
+                  name="course-name"
+                  placeholder="nome do curso"
+                  value={cursoName}
+                  disabled={disable}
+                  onChange={e => {
+                    setCursoName(e.target.value)
+                  }}
+                />
+
+                <label class="sr-only" for-id="password">
+                  nome do curso
+                </label>
+                <input
+                  type="text"
+                  id="course-description"
+                  name="course-description"
+                  placeholder="descrição"
+                  value={descriptions}
+                  disabled={disable}
+                  onChange={e => {
+                    setDescriptions(e.target.value)
+                  }}
+                />
+
+                <div class="buttons input-group actions">
+                  <div
+                    onClick={() => {
+                      setMostrarModal(false)
+                    }}
+                    class="button  cancel red"
+                  >
+                    Cancelar
+                  </div>
+                  <button onClick={handleCriarCurso} class="button">
+                    Criar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        ) : null}
       </div>
     </BrowserRouter>
   )
 }
 
-export default adminCourses
+export default AdminCourses

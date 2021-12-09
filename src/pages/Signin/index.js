@@ -28,11 +28,9 @@ const Signin = () => {
       }
 
       if (json.isAdmin) {
-        alert(json.isAdmin)
         doLogin(json.token)
         window.location.href = '/admin/users'
       } else {
-        alert(json.isAdmin)
         doLogin(json.token)
         window.location.href = '/home'
       }

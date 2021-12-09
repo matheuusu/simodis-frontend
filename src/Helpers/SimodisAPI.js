@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import qs from 'qs'
+import { myToken } from './AuthHandler'
 
 const BASEAPI = 'https://backend-simodis.herokuapp.com'
 
@@ -19,6 +20,34 @@ const apiFetchPost = async (endpoint, body) => {
     },
     body: JSON.stringify(body)
   })
+
+  const json = await res.json()
+
+  if (json.notallowed) {
+    window.location.href = '/'
+    return
+  }
+
+  return json
+}
+
+const apiFetchPut = async (endpoint, body) => {
+  if (!body.token) {
+    let token = Cookies.get('token')
+    if (token) {
+      body.token = token
+    }
+  }
+
+  const res = await fetch(BASEAPI + endpoint, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  })
+
   const json = await res.json()
 
   if (json.notallowed) {
@@ -84,8 +113,13 @@ const SimodisAPI = {
     return json
   },
 
-  getCourseGrade: async token => {
-    const json = await apiFetchGet('/course/mycourse', { token })
+  getListUsers: async () => {
+    const json = await apiFetchGet('/user/listusers')
+    return json.users
+  },
+
+  getMyCoursers: async () => {
+    const json = await apiFetchGet('/course/mycourse', { myToken })
     return json.coursersAndGrades
   },
 
@@ -93,6 +127,22 @@ const SimodisAPI = {
     const json = await apiFetchGet('/user/recoverpassword', {
       email
     })
+    return json
+  },
+
+  altPassword: async (token, newPassword) => {
+    const json = await apiFetchPut('/user/altpassword', {
+      token,
+      newPassword
+    })
+    return json
+  },
+
+  getQuestions: async id_course => {
+    const json = await apiFetchGet('/course/tasks', {
+      id_course
+    })
+
     return json
   }
 }

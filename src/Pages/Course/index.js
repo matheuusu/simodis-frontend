@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
-import { myToken } from '../../Helpers/AuthHandler'
+import { myToken, doId } from '../../Helpers/AuthHandler'
 import { logout } from '../../Helpers/AuthHandler'
 
-const Courses = () => {
+const Courses = props => {
   const handleLogout = () => {
     logout()
     window.location.href = '/'
+  }
+
+  const handleId = id => {
+    doId(id)
   }
 
   const api = useApi()
@@ -107,11 +111,19 @@ const Courses = () => {
               <div class="courses-wrapp">
                 {coursers.map((item, index) => {
                   return (
-                    <div href="" class="course">
+                    <div href="" class="course" key={index}>
                       <h2>{item.name}</h2>
                       <p>{item.description}</p>
 
-                      <div class="button">Entrar</div>
+                      <a
+                        class="button"
+                        onClick={() => {
+                          handleId();
+                          window.location.href = '/question'
+                        }}
+                      >
+                        Entrar
+                      </a>
                     </div>
                   )
                 })}
@@ -121,60 +133,33 @@ const Courses = () => {
         </main>
 
         {/* <!----- MODAL ------> */}
-        {mostrarModal ? (
-          <div class="modal-wrapper active">
-            <div class="modal">
-              <h2>Criar Curso</h2>
-              <p>Insira o nome e descrição do curso que deseja criar</p>
+        {/* <div className="modal-overlay">
+          <section class="section" id="question">
+            <div class="container">
+              <div class="gradients">
+                <div class="card-infor">
+                  <h2>Com quantos paus se faz uma canoa?</h2>
+                  <div class="answers">
+                    <input type="radio" name="answer" id="answer1" />
+                    <label for="answer1">resposta</label>
 
-              <form method="POST">
-                <label class="sr-only" for-id="password">
-                  nome do curso
-                </label>
-                <input
-                  type="text"
-                  id="course-name"
-                  name="course-name"
-                  placeholder="nome do curso"
-                  value={cursoName}
-                  disabled={disable}
-                  onChange={e => {
-                    setCursoName(e.target.value)
-                  }}
-                />
+                    <input type="radio" name="answer" id="answer2" />
+                    <label for="answer2">resposta</label>
 
-                <label class="sr-only" for-id="password">
-                  nome do curso
-                </label>
-                <input
-                  type="text"
-                  id="course-description"
-                  name="course-description"
-                  placeholder="descrição"
-                  value={descriptions}
-                  disabled={disable}
-                  onChange={e => {
-                    setDescriptions(e.target.value)
-                  }}
-                />
+                    <input type="radio" name="answer" id="answer3" />
+                    <label for="answer3">resposta</label>
 
-                <div class="buttons">
-                  <div
-                    onClick={() => {
-                      setMostrarModal(false)
-                    }}
-                    class="button grey cancel"
-                  >
-                    Cancelar
+                    <input type="radio" name="answer" id="answer4" />
+                    <label for="answer4">resposta</label>
+
+                    <input type="radio" name="answer" id="answer5" />
+                    <label for="answer5">resposta</label>
                   </div>
-                  <button onClick={handleCriarCurso} class="red">
-                    Criar
-                  </button>
                 </div>
-              </form>
+              </div>
             </div>
-          </div>
-        ) : null}
+          </section>
+        </div> */}
       </div>
     </BrowserRouter>
   )

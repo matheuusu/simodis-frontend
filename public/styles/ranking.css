@@ -1,36 +1,36 @@
 /* [ Restyle ] ////////////////////////////////// */
-ul {
+#rankings ul {
   list-style: none;
 }
 
 /* [ Layout ] /////////////////////////////////// */
-.container {
+#rankings .container {
   margin: 0 5rem;
 }
 
-.grid {
+#rankings .grid {
   display: grid;
   gap: 2rem;
 }
 
-main {
+#rankings main {
   margin-top: calc(var(--header-height) + 6rem);
 }
 
-.bar {
+#rankings .bar {
   width: 100%;
   height: 3.5rem;
   border-radius: 5px 5px 0 0;
   background: linear-gradient(315deg, #3485ff 0%, #ffffff 74%);
 }
 
-.divider {
+#rankings .divider {
   width: 1px;
   background: var(--grey-blue);
 }
 
 /* [ Header ] /////////////////////////////////// */
-#header {
+#rankings #header {
   border-bottom: 1px solid var(--grey-light);
   margin-bottom: 2rem;
   display: flex;
@@ -44,7 +44,7 @@ main {
 }
 
 /* [ Navigation ] */
-nav {
+#rankings nav {
   width: 100%;
   height: var(--header-height);
   display: flex;
@@ -52,24 +52,25 @@ nav {
   align-items: center;
 }
 
-nav ul {
+#rankings nav ul {
   display: flex;
   gap: 2rem;
 }
 
-nav ul li a {
+#rankings nav ul li a {
   color: var(--grey-dark);
   font-weight: 700;
   transition: color 0.2s;
   position: relative;
+  cursor: pointer;
 }
 
-nav ul li a:hover {
+#rankings nav ul li a:hover {
   color: var(--blue);
   cursor: pointer;
 }
 
-nav ul li a::after {
+#rankings nav ul li a::after {
   content: '';
   width: 100%;
   height: 0px;
@@ -82,24 +83,24 @@ nav ul li a::after {
   transition: height 0.3s;
 }
 
-nav ul li a:hover::after {
+#rankings nav ul li a:hover::after {
   height: 2px;
 }
 
-nav ul li a.isSelected::after {
+#rankings nav ul li a.isSelected::after {
   height: 2px;
 }
 
-nav ul li a.isSelected {
+#rankings nav ul li a.isSelected {
   color: var(--blue);
 }
 
 /* [ Profile ] */
-.profile {
+#rankings .profile {
   width: 6rem;
   height: 6rem;
 
-  background: url('https://github.com/matheuusu.png');
+  background: url('https://github.com/carlosexsantos.png');
   background-position: center center;
   background-size: cover;
   background-clip: content-box;
@@ -111,39 +112,39 @@ nav ul li a.isSelected {
 }
 
 /* [ Main ] ///////////////////////////////////// */
-#ranking {
+#rankings #ranking {
   overflow: hidden;
 }
 
-#ranking .container {
+#rankings #ranking .container {
   width: 75%;
   margin: 0 auto;
 }
 
-#ranking h1 {
+#rankings #ranking h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: var(--grey-dark);
 }
 
 /* [ table ] */
-#data-table {
+#rankings #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
   color: var(--grey-dark);
 }
 
-table thead tr th:first-child,
-table tbody tr td:first-child {
+#rankings table thead tr th:first-child,
+#rankings table tbody tr td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
-table thead tr th:last-child,
-table tbody tr td:last-child {
+#rankings table thead tr th:last-child,
+#rankings table tbody tr td:last-child {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
-table thead th {
+#rankings table thead th {
   background: var(--white);
 
   font-weight: 700;
@@ -152,21 +153,21 @@ table thead th {
   text-align: left;
 }
 
-table thead,
-table tbody {
+#rankings table thead,
+#rankings table tbody {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
-table tbody tr {
+#rankings table tbody tr {
   opacity: 0.7;
 }
 
-table tbody tr:hover {
+#rankings table tbody tr:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-table tbody td {
+#rankings table tbody td {
   background: var(--white);
   padding: 1rem 2rem;
 }

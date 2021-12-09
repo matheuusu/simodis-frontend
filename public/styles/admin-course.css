@@ -94,7 +94,7 @@
   width: 6rem;
   height: 6rem;
 
-  background: url('https://github.com/matheuusu.png');
+  background: url('https://github.com/carlosexsantos.png');
   background-position: center center;
   background-size: cover;
   background-clip: content-box;
@@ -119,6 +119,15 @@
   font-size: 3rem;
   color: var(--grey-dark);
   margin-bottom: 1rem;
+}
+
+#admin-courses #admin-coursers .course-create {
+  display: flex;
+  justify-content: space-between;
+}
+
+#admin-courses #admin-coursers .course-create div {
+  width: 8rem;
 }
 
 /* [ table ] */
@@ -171,4 +180,78 @@
   border-radius: 0.25rem;
 
   padding: 0.3rem 1rem;
+}
+
+/* [ Modal ] //////////////////////////////////// */
+#admin-courses .modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 999;
+}
+
+#admin-courses .modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#admin-courses .modal {
+  background: var(--white);
+  padding: 2.4rem;
+
+  position: relative;
+  z-index: 1;
+
+  width: 50%;
+}
+
+/* [ Form ] */
+#admin-courses .modal h2,
+#admin-courses .modal p {
+  margin-top: 0;
+  color: var(--grey-dark);
+}
+
+#admin-courses input {
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  outline: none;
+  width: 100%;
+  border: 1px solid var(--grey-blue);
+  margin-bottom: 0.5rem;
+}
+
+#admin-courses input.input-name {
+  border: 0.2rem solid var(--grey-blue);
+}
+
+#admin-courses .input-group {
+  margin-top: 0.8rem;
+}
+
+#admin-courses .input-group .help {
+  opacity: 0.4;
+}
+
+#admin-courses .input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#admin-courses .input-group.actions .button,
+#admin-courses .input-group.actions button {
+  width: 48%;
 }

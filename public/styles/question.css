@@ -1,35 +1,31 @@
 /* [ Restyle ] ////////////////////////////////// */
-ul {
+#questions ul {
   list-style: none;
 }
 
 /* [ Layout ] /////////////////////////////////// */
-#courses .container {
+#questions .container {
   margin: 0 5rem;
 }
 
-#courses .grid {
+#questions .grid {
   display: grid;
   gap: 2rem;
 }
 
-#courses main {
+#questions main {
   margin-top: calc(var(--header-height) + 6rem);
 }
 
-#courses .gradients {
+#questions .gradients {
   padding: 0.3rem;
   border-radius: 5px;
   background: #ffffff;
   background-image: linear-gradient(315deg, rgb(32 80 120) 0%, #ffffff 33%);
 }
 
-#courses {
-  width: 100%;
-}
-
 /* [ Header ] /////////////////////////////////// */
-#courses #header {
+#questions #header {
   border-bottom: 1px solid var(--grey-light);
   margin-bottom: 2rem;
   display: flex;
@@ -43,7 +39,7 @@ ul {
 }
 
 /* [ Navigation ] */
-#courses nav {
+#questions nav {
   width: 100%;
   height: var(--header-height);
   display: flex;
@@ -51,24 +47,24 @@ ul {
   align-items: center;
 }
 
-#courses nav ul {
+#questions nav ul {
   display: flex;
   gap: 2rem;
 }
 
-#courses nav ul li a {
+#questions nav ul li a {
   color: var(--grey-dark);
   font-weight: 700;
   transition: color 0.2s;
   position: relative;
 }
 
-#courses nav ul li a:hover {
+#questions nav ul li a:hover {
   color: var(--blue);
   cursor: pointer;
 }
 
-#courses nav ul li a::after {
+#questions nav ul li a::after {
   content: '';
   width: 100%;
   height: 0px;
@@ -81,24 +77,24 @@ ul {
   transition: height 0.3s;
 }
 
-#courses nav ul li a:hover::after {
+#questions nav ul li a:hover::after {
   height: 2px;
 }
 
-#courses nav ul li a.isSelected::after {
+#questions nav ul li a.isSelected::after {
   height: 2px;
 }
 
-#courses nav ul li a.isSelected {
+#questions nav ul li a.isSelected {
   color: var(--blue);
 }
 
 /* [ Profile ] */
-#courses .profile {
+#questions .profile {
   width: 6rem;
   height: 6rem;
 
-  background: url('https://github.com/carlosexsantos.png');
+  background: url('https://github.com/matheuusu.png');
   background-position: center center;
   background-size: cover;
   background-clip: content-box;
@@ -110,75 +106,11 @@ ul {
 }
 
 /* [ Main ] ///////////////////////////////////// */
-#courses #course {
+#questions #question {
   overflow: hidden;
 }
 
-#courses #course .container {
-  width: 80.4%;
-  margin: 0 auto;
-}
-
-#courses #course h1 {
-  font-size: 3rem;
-  color: var(--grey-dark);
-}
-
-#courses .courses-wrapp {
-  margin-top: 2rem;
-  display: flex;
-  gap: 2rem;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: flex-start;
-}
-
-#courses .course {
-  width: 28rem;
-  height: 38rem;
-  padding: 2rem;
-
-  background: var(--white);
-  color: var(--grey-dark);
-  border: 2px solid var(--grey-light);
-  border-bottom: 3px solid var(--grey-blue);
-  border-radius: 0.5rem 0.5rem 0 0;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  text-align: center;
-}
-
-/* [ Modal ] ////////////////////////// */
-#courses .modal-overlay {
-  width: 100%;
-  height: 100%;
-
-  background-color: var(--background);
-
-  position: fixed;
-  top: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 1;
-  visibility: visible;
-
-  z-index: 999;
-}
-
-#courses #question {
-  overflow: hidden;
-  width: 100%;
-  height: auto;
-}
-
-#courses #question .container {
+#questions #question .container {
   width: 75%;
   margin: 0 auto;
 
@@ -187,7 +119,7 @@ ul {
   gap: 2rem;
 }
 
-#courses .card-infor {
+#questions .card-infor {
   width: 100%;
   padding: 2rem 3rem;
   background: var(--white);
@@ -196,24 +128,24 @@ ul {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
-#courses .card-infor h2 {
+#questions .card-infor h2 {
   font-size: 2.5rem;
   margin: 2rem 0;
   font-family: 'Poppins';
   color: var(--grey-dark);
 }
 
-#courses .card-infor .answers {
+#questions .card-infor .answers {
   display: flex;
   gap: 1rem;
   flex-direction: column;
 }
 
-#courses .card-infor input[type='radio'] {
+#questions .card-infor input[type='radio'] {
   display: none;
 }
 
-#courses .card-infor label {
+#questions .card-infor label {
   position: relative;
   font-size: 2rem;
   border: 2px solid var(--grey-dark);
@@ -226,7 +158,7 @@ ul {
   align-items: center;
 }
 
-#courses .card-infor label:before {
+#questions .card-infor label:before {
   content: '';
   width: 2.5rem;
   height: 2.5rem;
@@ -235,13 +167,13 @@ ul {
   margin-right: 2rem;
 }
 
-#courses .card-infor input[type='radio']:checked + label {
+#questions .card-infor input[type='radio']:checked + label {
   background: var(--blue);
   color: var(--white);
   border: 2px solid var(--grey-light);
 }
 
-#courses .card-infor input[type='radio']:checked + label::before {
+#questions .card-infor input[type='radio']:checked + label::before {
   width: 1.6rem;
   height: 1.6rem;
   border: 8px solid var(--white);

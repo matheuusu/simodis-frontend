@@ -85,9 +85,24 @@ const Profiles = () => {
                 <h2 class="title">{user.name}</h2>
               </div>
               <div class="content-wrapper wrapper">
-                <h3 id="enrolment">matrícula</h3>
-                <label for="enrolment">01277424</label>
-                <div class="grades"></div>
+                <div class="infor">
+                  <h3 id="enrolment">matrícula</h3>
+                  <label for="enrolment">01277424</label>
+                </div>
+                <div class="grades">
+                  <table id="data-table">
+                    <thead>
+                      <tr>
+                        <th>Cursos</th>
+                        <th>Notas</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr></tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </section>
@@ -102,7 +117,13 @@ const Profiles = () => {
                   <label class="sr-only" for="name">
                     Nome
                   </label>
-                  <input class="input-name" type="text" id="name" name="name" placeholder="Nome" />
+                  <input
+                    class="input-name"
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Nome"
+                  />
                 </div>
 
                 <div class="input-group">

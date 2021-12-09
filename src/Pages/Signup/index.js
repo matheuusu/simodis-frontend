@@ -106,8 +106,6 @@ const Signup = () => {
                     }}
                   />
 
-                  
-
                   <button onClick={handleCriarUser}>
                     <img src="../images/enter-room.svg" alt="Login" />
                     Criar conta

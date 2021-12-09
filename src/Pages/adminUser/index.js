@@ -1,12 +1,26 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import useApi from '../../Helpers/SimodisAPI'
+import { myToken } from '../../Helpers/AuthHandler'
 import { logout } from '../../Helpers/AuthHandler'
 
-const adminUsers = () => {
+const AdminUsers = () => {
   const handleLogout = () => {
     logout()
     window.location.href = '/'
   }
+
+  const api = useApi()
+
+  const [users, setUsers] = React.useState([])
+
+  React.useEffect(() => {
+    const getListUsers = async () => {
+      const listUsers = await api.getListUsers()
+      setUsers(listUsers)
+    }
+    getListUsers()
+  }, [])
 
   return (
     <BrowserRouter>
@@ -37,9 +51,6 @@ const adminUsers = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="">Ranking</a>
-                </li>
-                <li>
                   <a onClick={handleLogout}>Sair</a>
                 </li>
               </ul>
@@ -64,27 +75,17 @@ const adminUsers = () => {
                 </thead>
 
                 <tbody>
-                  <tr>
-                    <td>Matheus Silva</td>
-                    <td>01277424</td>
-                    <td>
-                      <a href="">Consultar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Yano Victor</td>
-                    <td>01277423</td>
-                    <td>
-                      <a href="">Consultar</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Luiz Felipe</td>
-                    <td>01277422</td>
-                    <td>
-                      <a href="">Consultar</a>
-                    </td>
-                  </tr>
+                  {users.map((item, index) => {
+                    return (
+                      <tr>
+                        <td>{item.name}</td>
+                        <td>{item.enrollment}</td>
+                        <td>
+                          <a href="">Consultar</a>
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>
@@ -95,4 +96,4 @@ const adminUsers = () => {
   )
 }
 
-export default adminUsers
+export default AdminUsers

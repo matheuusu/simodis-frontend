@@ -9,6 +9,7 @@ import Ranking from './Pages/Ranking'
 import AdminCourse from './Pages/adminCourse'
 import AdminUser from './Pages/adminUser'
 import Recovery from './Pages/Recovery'
+import Question from './Pages/Question'
 
 import { isLogged } from './Helpers/AuthHandler'
 
@@ -48,6 +49,10 @@ export default () => {
 
       <Private exact path="/cursos">
         <Course />
+      </Private>
+
+      <Private exact path="/question">
+        <Question />
       </Private>
 
       <Private exact path="/perfil">

@@ -7,6 +7,8 @@ const Recovery = () => {
   const api = useApi()
 
   const [email, setEmail] = useState('')
+  const [token, setToken] = useState('')
+  const [password, setPassword] = useState('')
   const [disable, setDisable] = useState(false)
 
   const [mostrarModal, setMostrarModal] = useState(false)
@@ -24,13 +26,34 @@ const Recovery = () => {
       return
     } else {
       const json = await api.getPass(email)
-      alert(email)
 
       if (json.error) {
         alert(JSON.stringify(json.error))
       } else {
         setEmail('')
         setMostrarModal(true)
+      }
+    }
+  }
+
+  const handleAltPass = async e => {
+    e.preventDefault()
+    setDisable(true)
+
+    if (!token || !password) {
+      alert('Preencha os campos corretamente')
+      setMostrarModal(true)
+      return
+    } else {
+      const json = await api.altPassword(token, password)
+
+      if (json.error) {
+        alert(JSON.stringify(json.error))
+        setDisable(false)
+        return
+      } else {
+        alert(password)
+        window.location.href = '/'
       }
     }
   }
@@ -90,31 +113,31 @@ const Recovery = () => {
               <div className="modal">
                 <h2>Editar Perfil</h2>
                 <form action="">
-                  <div class="input-group">
-                    <label class="sr-only" for="token">
-                      Token
-                    </label>
-                    <input
-                      class="input-name"
-                      type="text"
-                      id="token"
-                      name="token"
-                      placeholder="Token"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    className="input-token"
+                    id="token"
+                    name="token"
+                    placeholder="Insira o token"
+                    value={token}
+                    disabled={disable}
+                    onChange={t => {
+                      setToken(t.target.value)
+                    }}
+                  />
 
-                  <div class="input-group">
-                    <label class="sr-only" for="new-password">
-                      Nova senha
-                    </label>
-                    <input
-                      class="input-name"
-                      type="text"
-                      id="new-password"
-                      name="new-password"
-                      placeholder="Insira a nova senha"
-                    />
-                  </div>
+                  <input
+                    type="password"
+                    className="input-pass"
+                    id="altpass"
+                    name="altpass"
+                    placeholder="Insira a nova senha"
+                    value={password}
+                    disabled={disable}
+                    onChange={p => {
+                      setPassword(p.target.value)
+                    }}
+                  />
 
                   <div class="input-group actions">
                     <a
@@ -126,14 +149,9 @@ const Recovery = () => {
                     >
                       Cancelar
                     </a>
-                    <div
-                      class="button"
-                      onClick={() => {
-                        window.location.href = '/'
-                      }}
-                    >
+                    <button class="button" onClick={handleAltPass}>
                       Enviar
-                    </div>
+                    </button>
                   </div>
                 </form>
               </div>
