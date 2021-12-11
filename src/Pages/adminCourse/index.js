@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
 import { myToken } from '../../Helpers/AuthHandler'
 import { logout } from '../../Helpers/AuthHandler'
+import Modal from '../../components/modalCourse'
 
 const AdminCourses = () => {
   const handleLogout = () => {
@@ -18,8 +19,14 @@ const AdminCourses = () => {
   const [disable, setDisable] = React.useState(false)
 
   const [mostrarModal, setMostrarModal] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
+
   const handleMostrarModal = () => {
     !mostrarModal ? setMostrarModal(true) : setMostrarModal(false)
+  }
+
+  const handleShowModal = () => {
+    !showModal ? setShowModal(true) : setShowModal(false)
   }
 
   React.useEffect(() => {
@@ -122,7 +129,13 @@ const AdminCourses = () => {
                       <tr>
                         <td>{item.name}</td>
                         <td>
-                          <a href="">Consultar</a>
+                          <a
+                            onClick={() => {
+                              setShowModal(true)
+                            }}
+                          >
+                            Consultar
+                          </a>
                         </td>
                       </tr>
                     )
@@ -188,6 +201,9 @@ const AdminCourses = () => {
             </div>
           </div>
         ) : null}
+
+        {/* Segunda modal */}
+        {showModal ? <Modal /> : null}
       </div>
     </BrowserRouter>
   )

@@ -22,7 +22,7 @@ const Private = ({ children, ...rest }) => {
 
 const PrivateAdmin = ({ children, ...rest }) => {
   return (
-    <Route {...rest}>{logged && !admin ? children : <Redirect to="/" />}</Route>
+    <Route {...rest}>{logged && admin ? children : <Redirect to="/" />}</Route>
   )
 }
 

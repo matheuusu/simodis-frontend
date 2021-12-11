@@ -16,6 +16,7 @@ const AdminUsers = () => {
   const [user, setUser] = React.useState()
   const [modal, setModal] = React.useState(false)
   const [users, setUsers] = React.useState([])
+  
   const [cursos, setCursos] = React.useState([])
 
   React.useEffect(() => {

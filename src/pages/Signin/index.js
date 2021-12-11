@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
-import { doLogin } from '../../Helpers/AuthHandler'
+import { doLogin, doAdmin } from '../../Helpers/AuthHandler'
 
 const Signin = () => {
   const api = useApi()
@@ -29,6 +29,7 @@ const Signin = () => {
 
       if (json.isAdmin) {
         doLogin(json.token)
+        doAdmin(json.isAdmin)
         window.location.href = '/admin/users'
       } else {
         doLogin(json.token)
