@@ -11,9 +11,12 @@ const AdminUsers = () => {
   }
 
   const api = useApi()
+  const token = myToken()
+
   const [user, setUser] = React.useState()
   const [modal, setModal] = React.useState(false)
   const [users, setUsers] = React.useState([])
+  const [cursos, setCursos] = React.useState([])
 
   React.useEffect(() => {
     const getListUsers = async () => {
@@ -21,6 +24,14 @@ const AdminUsers = () => {
       setUsers(listUsers)
     }
     getListUsers()
+  }, [])
+
+  React.useEffect(() => {
+    const getMyCourse = async token => {
+      const json = await api.getMyCoursers(token)
+      setCursos(json)
+    }
+    getMyCourse(token)
   }, [])
 
   return (
@@ -111,7 +122,6 @@ const AdminUsers = () => {
                       <div class="infor-header">
                         <h2>Informações do usuário</h2>
                         <div className="actions">
-                          <button class="button">Editar</button>
                           <button
                             className="button red"
                             onClick={() => {
@@ -153,15 +163,14 @@ const AdminUsers = () => {
                         </thead>
 
                         <tbody>
-                          <tr>
-                            <td>Lógica de programação</td>
-                            <td>10</td>
-                          </tr>
-                          <tr>
-                            <td>Programação Funcional</td>
-                            <td>7</td>
-                            <td></td>
-                          </tr>
+                          {cursos.map((item, index) => {
+                            return (
+                              <tr>
+                                <td>{item.course}</td>
+                                <td>{item.grades}</td>
+                              </tr>
+                            )
+                          })}
                         </tbody>
                       </table>
 

@@ -13,17 +13,27 @@ export default function Question() {
   const api = useApi()
   let courseId = getId()
 
-  const [quest, setQuest] = useState({})
+  const [quest, setQuest] = useState([])
+  const [estado, setEstado] = useState()
 
   useEffect(() => {
     const getQuestion = async () => {
-      const question = await api.getQuestions(courseId)
-      setQuest(question)
+      const questions = await api.getQuestions(courseId)
+      setQuest(questions)
     }
 
     console.log(quest)
     getQuestion()
   }, [])
+
+  const [test, setTest] = useState('')
+
+  const handleOnChange = async event => {
+    const target = event.target
+    let value = target.value
+    setTest(value)
+    alert(value)
+  }
 
   return (
     <BrowserRouter>
@@ -76,24 +86,49 @@ export default function Question() {
               <div class="gradients">
                 <div class="card-infor">
                   <h2>Com quantos paus se faz uma canoa?</h2>
-                  <div class="answers">
-                    <div className="quests">
-                      <input type="radio" name="answer" id="answer1" />
-                      <label for="answer1">alt</label>
-
-                      <input type="radio" name="answer" id="answer2" />
-                      <label for="answer2">alt</label>
-
-                      <input type="radio" name="answer" id="answer3" />
-                      <label for="answer3">alt</label>
-
-                      <input type="radio" name="answer" id="answer4" />
-                      <label for="answer4">alt</label>
-
-                      <input type="radio" name="answer" id="answer5" />
-                      <label for="answer5">alt</label>
-                    </div>
-                  </div>
+                  <form class="answers">
+                    {quest.map(item => {
+                      return (
+                        <div className="quests">
+                          {item.answers.map(answer => {
+                            return (
+                              <div className="quest">
+                                {answer.answer_false ? (
+                                  <>
+                                    <label htmlFor="">
+                                      {answer.answer_false}
+                                    </label>
+                                    <input
+                                      name="qualquer"
+                                      type="radio"
+                                      value={answer.id}
+                                      onChange={e => {
+                                        handleOnChange(e)
+                                      }}
+                                    />
+                                  </>
+                                ) : answer.answer_true ? (
+                                  <>
+                                    <label htmlFor="">
+                                      {answer.answer_true}
+                                    </label>
+                                    <input
+                                      name="qualquer"
+                                      type="radio"
+                                      value={answer.id}
+                                      onChange={e => {
+                                        handleOnChange(e)
+                                      }}
+                                    />
+                                  </>
+                                ) : null}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )
+                    })}
+                  </form>
                 </div>
               </div>
             </div>

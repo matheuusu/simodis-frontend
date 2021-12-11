@@ -7,12 +7,22 @@ export const doLogin = token => {
   Cookies.set('token', token)
 }
 
+export const isAdmin = () => {
+  const admin = Cookies.get('isAdmin')
+  return admin
+}
+
+export const doAdmin = isAdmin => {
+  Cookies.set('isAdmin', isAdmin)
+}
+
 export const doId = id => {
   Cookies.set('id', id)
 }
 
 export const getId = () => {
-  return Cookies.get('id')
+  const id = Cookies.get('id')
+  return id
 }
 
 //Verificando se o usuário está logado;
@@ -29,5 +39,6 @@ export const myToken = () => {
 
 export const logout = () => {
   Cookies.remove('token')
-  // Cookies.remove('id')
+  Cookies.remove('id')
+  Cookies.remove('isAdmin')
 }

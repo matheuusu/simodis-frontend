@@ -174,6 +174,8 @@
   cursor: pointer;
 }
 
+/* [ Modal ] */
+
 #admin-users .modal-overlay {
   width: 100%;
   height: 100%;
@@ -194,5 +196,3 @@
 
   color: var(--grey-dark);
 }
-
-

@@ -10,14 +10,20 @@ import AdminCourse from './Pages/adminCourse'
 import AdminUser from './Pages/adminUser'
 import Recovery from './Pages/Recovery'
 import Question from './Pages/Question'
-import UserInfor from './Pages/adminUserInfor'
 
-import { isLogged } from './Helpers/AuthHandler'
+import { isLogged, isAdmin } from './Helpers/AuthHandler'
 
 let logged = isLogged()
+let admin = isAdmin()
 
 const Private = ({ children, ...rest }) => {
   return <Route {...rest}>{logged ? children : <Redirect to="/" />}</Route>
+}
+
+const PrivateAdmin = ({ children, ...rest }) => {
+  return (
+    <Route {...rest}>{logged && !admin ? children : <Redirect to="/" />}</Route>
+  )
 }
 
 //eslint-disable-next-line import/no-anonymous-default-export
@@ -36,17 +42,13 @@ export default () => {
         <Recovery />
       </Route>
 
-      <Private exact path="/admin/courses">
+      <PrivateAdmin exact path="/admin/courses">
         <AdminCourse />
-      </Private>
+      </PrivateAdmin>
 
-      <Private exact path="/admin/users">
+      <PrivateAdmin exact path="/admin/users">
         <AdminUser />
-      </Private>
-
-      <Private exact path="/admin/users/infor">
-        <UserInfor />
-      </Private>
+      </PrivateAdmin>
 
       <Private exact path="/home">
         <Home />

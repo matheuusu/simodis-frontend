@@ -11,6 +11,7 @@ const Profiles = () => {
   }
 
   const [user, setUser] = useState({})
+  const [cursos, setCursos] = useState([])
 
   const [mostrarModal, setMostrarModal] = useState(false)
   const handleMostrarModal = () => {
@@ -26,6 +27,14 @@ const Profiles = () => {
       setUser(userInfo)
     }
     getUserInfo(token)
+  }, [])
+
+  useEffect(() => {
+    const getMyCourse = async token => {
+      const json = await api.getMyCoursers(token)
+      setCursos(json)
+    }
+    getMyCourse(token)
   }, [])
 
   return (
@@ -74,84 +83,68 @@ const Profiles = () => {
         <main>
           <section class="section" id="profile">
             <div class="container">
-              <div class="profile-wrapper wrapper">
-                <i
-                  onClick={() => {
-                    setMostrarModal(true)
-                  }}
-                  class="icon-pencil"
-                ></i>
-                <div class="profile"></div>
-                <h2 class="title">{user.name}</h2>
-              </div>
-              <div class="content-wrapper wrapper">
-                <div class="infor">
-                  <h3 id="enrolment">matrícula</h3>
-                  <label for="enrolment">01277424</label>
-                </div>
-                <div class="grades">
-                  <table id="data-table">
-                    <thead>
-                      <tr>
-                        <th>Cursos</th>
-                        <th>Notas</th>
-                      </tr>
-                    </thead>
+              <div class="gradients">
+                <div class="card-infor">
+                  <div class="infor-user">
+                    <div class="infor-header">
+                      <h2>Informações do usuário</h2>
+                      <div className="actions">
+                        <button
+                          class="button"
+                          onClick={() => {
+                            alert(cursos)
+                            console.log(cursos)
+                          }}
+                        >
+                          Editar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="infors">
+                      <div class="infor">
+                        <label for="">Nome</label>
+                        <h3>{user.name}</h3>
+                      </div>
+                      <div class="infor">
+                        <label for="">Matricula</label>
+                        <h3>{user.enrollment}</h3>
+                      </div>
+                      <div class="infor">
+                        <label for="">Ultimo acesso</label>
+                        <h3>2021-11-06 01:35:18</h3>
+                      </div>
+                    </div>
 
-                    <tbody>
-                      <tr></tr>
-                    </tbody>
-                  </table>
+                    <div class="divider1"></div>
+
+                    <h2>Cursos matriculados</h2>
+                    <table id="data-table">
+                      <thead>
+                        <tr>
+                          <th>Curso</th>
+                          <th>Nota</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {cursos.map((item, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{item.course}</td>
+                              <td>{item.grades}</td>
+                            </tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+
+                    <div class="divider2"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
         </main>
-
-        {mostrarModal ? (
-          <div className="modal-overlay active">
-            <div className="modal">
-              <h2>Editar Perfil</h2>
-              <form action="">
-                <div class="input-group">
-                  <label class="sr-only" for="name">
-                    Nome
-                  </label>
-                  <input
-                    class="input-name"
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Nome"
-                  />
-                </div>
-
-                <div class="input-group">
-                  <label class="sr-only" for="amount">
-                    Valor
-                  </label>
-                  <small class="help">
-                    Escolha uma imagem para o seu perfil
-                  </small>
-                  <input type="file" id="profile-image" name="profile-image" />
-                </div>
-
-                <div class="input-group actions">
-                  <a
-                    onClick={() => {
-                      setMostrarModal(false)
-                    }}
-                    href="#"
-                    class="button cancel red"
-                  >
-                    Cancelar
-                  </a>
-                  <button class="button">Salvar</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        ) : null}
       </div>
     </BrowserRouter>
   )

@@ -1,6 +1,5 @@
 import Cookies from 'js-cookie'
 import qs from 'qs'
-import { myToken } from './AuthHandler'
 
 const BASEAPI = 'https://backend-simodis.herokuapp.com'
 
@@ -118,8 +117,8 @@ const SimodisAPI = {
     return json.users
   },
 
-  getMyCoursers: async () => {
-    const json = await apiFetchGet('/course/mycourse', { myToken })
+  getMyCoursers: async token => {
+    const json = await apiFetchGet('/course/mycourse', { token })
     return json.coursersAndGrades
   },
 
@@ -143,7 +142,7 @@ const SimodisAPI = {
       id_course
     })
 
-    return json
+    return json.tasks_course
   }
 }
 

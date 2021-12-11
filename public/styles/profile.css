@@ -112,40 +112,88 @@
   padding: 2px;
   border: 2px solid var(--grey-blue);
   cursor: pointer;
+
+  opacity: 0;
 }
 
 /* [ Main ] ///////////////////////////////////// */
 #profiles #profile {
   overflow: hidden;
+  width: 100%;
+
+  color: var(--grey-dark);
 }
 
 #profiles #profile .container {
   width: 75%;
   margin: 0 auto;
 
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-#profiles #profile .wrapper {
-  border: 2px solid var(--grey-light);
-  border-radius: 6px;
+#profiles .card-infor {
+  width: 100%;
+  padding: 2rem 3rem;
   background: var(--white);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.11);
-  position: relative;
+  border: 1px solid var(--grey-light);
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+
+  height: auto;
+}
+
+#profiles .infor-user {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#profiles .infor-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#profiles .infor-header .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.mail-invite button.button {
+  height: 3rem;
+  padding: 2rem 1rem;
+}
+
+#profiles .infor-header .button {
+  width: 8rem;
+  height: 3rem;
+  padding: 2rem 1rem;
+}
+
+
+#profiles .infor-user .infors {
+  display: flex;
+  justify-content: space-between;
+}
+
+#profiles .mail-invite {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#profiles h2 {
+  font-family: 'Poppins';
 }
 
 /* [ table ] */
-#profiles .grades {
-  width: 80%;
-  margin-top: 2rem;
-}
-
 #profiles #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
   color: var(--grey-dark);
+
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
 #profiles table thead tr th:first-child,
@@ -160,125 +208,22 @@
 
 #profiles table thead th {
   background: var(--white);
+
   font-weight: 700;
+  padding: 1rem 2rem;
+
   text-align: left;
 }
 
-#profiles table thead,
-#profiles table tbody {
-  box-shadow: none;
-}
-
-/* [ Main Profile-wrapper ] */
-#profiles .profile-wrapper {
-  height: 32rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 0;
-}
-
-#profiles .icon-pencil {
-  color: var(--grey-dark);
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-}
-
-#profiles .icon-pencil:hover {
-  color: var(--grey-blue);
-  cursor: pointer;
-}
-
-#profiles .profile-wrapper .profile {
-  width: 15rem;
-  height: 15rem;
-
-  border: 3px solid var(--grey-blue);
-  padding: 0.3rem;
-
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-}
-
-#profiles .profile-wrapper .title {
-  text-align: center;
-}
-
-/* [Main Content-Wrapper] */
-#profiles .content-wrapper {
-  padding: 2rem;
-  color: var(--grey-dark);
-}
-
-/* [ Modal ] //////////////////////////////////// */
-#profiles .modal-overlay {
-  width: 100%;
-  height: 100%;
-
-  background-color: rgba(0, 0, 0, 0.6);
-
-  position: fixed;
-  top: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  visibility: hidden;
-
-  z-index: 999;
-}
-
-#profiles .modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-#profiles .modal {
+#profiles table tbody td {
   background: var(--white);
-  padding: 2.4rem;
-
-  position: relative;
-  z-index: 1;
-
-  width: 50%;
+  padding: 1rem 2rem;
 }
 
-/* [ Form ] */
-#profiles .modal h2 {
-  margin-top: 0;
-  color: var(--grey-dark);
-}
+#profiles table tbody tr a {
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 0.25rem;
 
-#profiles input {
-  border-radius: 0.2rem;
-  padding: 0.8rem;
-  outline: none;
-  width: 100%;
-}
-
-#profiles input.input-name {
-  border: 0.2rem solid var(--grey-blue);
-}
-
-#profiles .input-group {
-  margin-top: 0.8rem;
-}
-
-#profiles .input-group .help {
-  opacity: 0.4;
-}
-
-#profiles .input-group.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#profiles .input-group.actions .button,
-#profiles .input-group.actions button {
-  width: 48%;
+  padding: 0.3rem 1rem;
 }

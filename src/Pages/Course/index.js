@@ -118,7 +118,7 @@ const Courses = props => {
                       <a
                         class="button"
                         onClick={() => {
-                          handleId();
+                          handleId(item.id);
                           window.location.href = '/question'
                         }}
                       >
