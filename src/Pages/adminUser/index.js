@@ -16,7 +16,7 @@ const AdminUsers = () => {
   const [user, setUser] = React.useState()
   const [modal, setModal] = React.useState(false)
   const [users, setUsers] = React.useState([])
-  
+
   const [cursos, setCursos] = React.useState([])
 
   React.useEffect(() => {
@@ -47,9 +47,6 @@ const AdminUsers = () => {
             </h1>
             <div class="menu">
               <ul>
-                <li>
-                  <a href="">Home</a>
-                </li>
                 <li>
                   <a
                     class="isSelected"

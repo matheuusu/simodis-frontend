@@ -122,6 +122,28 @@ const SimodisAPI = {
     return json.coursersAndGrades
   },
 
+  createQuestion: async (
+    title,
+    answer_true,
+    course_id,
+    answerOne,
+    answerTwo,
+    answerThree,
+    answerFour
+  ) => {
+    const json = await apiFetchPost('/question/create', {
+      title,
+      answer_true,
+      course_id,
+      answerOne,
+      answerTwo,
+      answerThree,
+      answerFour
+    })
+
+    return json
+  },
+
   getPass: async email => {
     const json = await apiFetchGet('/user/recoverpassword', {
       email
@@ -143,6 +165,12 @@ const SimodisAPI = {
     })
 
     return json.tasks_course
+  },
+
+  createClass: async (token, id) => {
+    const json = await apiFetchPost('/class/add', { token, id })
+
+    return json
   }
 }
 

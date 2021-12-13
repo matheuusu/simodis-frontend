@@ -152,3 +152,29 @@ button,
   color: var(--grey-dark);
   -webkit-font-smoothing: auto;
 }
+
+.divider1 {
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  background-image: linear-gradient(
+    315deg,
+    rgb(32 80 120) 0%,
+    var(--grey-blue) 33%
+  );
+  opacity: 0.5;
+  margin: 1rem 0;
+}
+
+.divider2 {
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  background-image: linear-gradient(
+    315deg,
+    var(--grey-blue) 33%,
+    rgb(32 80 120) 0%
+  );
+  opacity: 0.5;
+  margin: 1rem 0;
+}

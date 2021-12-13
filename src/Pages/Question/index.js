@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { logout } from '../../Helpers/AuthHandler'
 import useApi from '../../Helpers/SimodisAPI'
-import { getId } from '../../Helpers/AuthHandler'
+import { getId, myToken } from '../../Helpers/AuthHandler'
 
 export default function Question() {
   const handleLogout = () => {
@@ -12,9 +12,18 @@ export default function Question() {
 
   const api = useApi()
   let courseId = getId()
+  const token = myToken()
 
   const [quest, setQuest] = useState([])
   const [estado, setEstado] = useState()
+
+  useEffect(() => {
+    const getClasses = async () => {
+      await api.createClass(token, courseId)
+    }
+
+    getClasses()
+  }, [])
 
   useEffect(() => {
     const getQuestion = async () => {
@@ -83,12 +92,12 @@ export default function Question() {
         <main>
           <section class="section" id="question">
             <div class="container">
-              <div class="gradients">
-                <div class="card-infor">
-                  <h2>Com quantos paus se faz uma canoa?</h2>
-                  <form class="answers">
-                    {quest.map(item => {
-                      return (
+              <form class="answers">
+                {quest.map(item => {
+                  return (
+                    <div class="gradients">
+                      <div class="card-infor">
+                        <h2>{item.question}</h2>
                         <div className="quests">
                           {item.answers.map(answer => {
                             return (
@@ -126,11 +135,11 @@ export default function Question() {
                             )
                           })}
                         </div>
-                      )
-                    })}
-                  </form>
-                </div>
-              </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </form>
             </div>
           </section>
         </main>

@@ -37,6 +37,10 @@ export const myToken = () => {
   return myToken
 }
 
+export const outId = () => {
+  Cookies.remove('id')
+}
+
 export const logout = () => {
   Cookies.remove('token')
   Cookies.remove('id')

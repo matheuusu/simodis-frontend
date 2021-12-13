@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import useApi from '../../Helpers/SimodisAPI'
-import { myToken, doId } from '../../Helpers/AuthHandler'
+import { myToken, doId, getId } from '../../Helpers/AuthHandler'
 import { logout } from '../../Helpers/AuthHandler'
 
 const Courses = props => {
@@ -34,32 +34,6 @@ const Courses = props => {
     }
     getListCoursers()
   }, [])
-
-  const handleCriarCurso = async e => {
-    const handleLogout = () => {
-      logout()
-      window.location.href('/')
-    }
-
-    e.preventDefault()
-    setDisable(false)
-
-    if (!cursoName && !descriptions) {
-      alert('Insira os dados do curso!')
-      setMostrarModal(false)
-    } else {
-      const json = await api.addCursos(cursoName, descriptions)
-
-      if (json.error) {
-        alert(JSON.stringify(json.error))
-      } else {
-        setCursoName('')
-        setDescriptions('')
-        setMostrarModal(false)
-        window.location.reload('/cursos')
-      }
-    }
-  }
 
   return (
     <BrowserRouter>
@@ -118,7 +92,7 @@ const Courses = props => {
                       <a
                         class="button"
                         onClick={() => {
-                          handleId(item.id);
+                          handleId(item.id)
                           window.location.href = '/question'
                         }}
                       >
