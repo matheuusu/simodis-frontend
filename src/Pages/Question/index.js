@@ -16,6 +16,7 @@ export default function Question() {
 
   const [quest, setQuest] = useState([])
   const [estado, setEstado] = useState()
+  const [outro, setOutro] = useState()
 
   useEffect(() => {
     const getClasses = async () => {
@@ -40,8 +41,12 @@ export default function Question() {
   const handleOnChange = async event => {
     const target = event.target
     let value = target.value
-    setTest(value)
+    setTest(test + ',' + value)
     alert(value)
+  }
+
+  const handleOutra = async () => {
+    alert(test)
   }
 
   return (
@@ -57,12 +62,7 @@ export default function Question() {
             <div class="menu">
               <ul>
                 <li>
-                  <a
-                    class="isSelected"
-                    onClick={() => (window.location.href = '/home')}
-                  >
-                    Inicio
-                  </a>
+                  <a onClick={() => (window.location.href = '/home')}>Inicio</a>
                 </li>
                 <li>
                   <a onClick={() => (window.location.href = '/perfil')}>
@@ -70,7 +70,10 @@ export default function Question() {
                   </a>
                 </li>
                 <li>
-                  <a onClick={() => (window.location.href = '/cursos')}>
+                  <a
+                    class="isSelected"
+                    onClick={() => (window.location.href = '/cursos')}
+                  >
                     Cursos
                   </a>
                 </li>
@@ -93,42 +96,42 @@ export default function Question() {
           <section class="section" id="question">
             <div class="container">
               <form class="answers">
-                {quest.map(item => {
+                {quest.map((item, index) => {
                   return (
-                    <div class="gradients">
+                    <div key={index} class="gradients">
                       <div class="card-infor">
                         <h2>{item.question}</h2>
                         <div className="quests">
-                          {item.answers.map(answer => {
+                          {item.answers.map((answer, index) => {
                             return (
-                              <div className="quest">
+                              <div key={index} className="quest">
                                 {answer.answer_false ? (
                                   <>
                                     <label htmlFor="">
                                       {answer.answer_false}
+                                      <input
+                                        name="qualquer"
+                                        type="radio"
+                                        value={answer.id}
+                                        onChange={e => {
+                                          handleOnChange(e)
+                                        }}
+                                      />
                                     </label>
-                                    <input
-                                      name="qualquer"
-                                      type="radio"
-                                      value={answer.id}
-                                      onChange={e => {
-                                        handleOnChange(e)
-                                      }}
-                                    />
                                   </>
                                 ) : answer.answer_true ? (
                                   <>
                                     <label htmlFor="">
                                       {answer.answer_true}
+                                      <input
+                                        name="qualquer"
+                                        type="radio"
+                                        value={answer.id}
+                                        onChange={e => {
+                                          handleOnChange(e)
+                                        }}
+                                      />
                                     </label>
-                                    <input
-                                      name="qualquer"
-                                      type="radio"
-                                      value={answer.id}
-                                      onChange={e => {
-                                        handleOnChange(e)
-                                      }}
-                                    />
                                   </>
                                 ) : null}
                               </div>
@@ -139,6 +142,10 @@ export default function Question() {
                     </div>
                   )
                 })}
+
+                <div className="input-group actions">
+                  <button className="button" onClick={handleOutra}></button>
+                </div>
               </form>
             </div>
           </section>

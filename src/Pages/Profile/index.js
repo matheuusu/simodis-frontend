@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { logout } from '../../Helpers/AuthHandler'
 import useApi from '../../Helpers/SimodisAPI'
 import { myToken } from '../../Helpers/AuthHandler'
+import ModalProfile from '../../components/profileModal'
 
 const Profiles = () => {
   const handleLogout = () => {
@@ -12,10 +13,10 @@ const Profiles = () => {
 
   const [user, setUser] = useState({})
   const [cursos, setCursos] = useState([])
+  const [showModalProfile, setShowModalProfile] = useState(false)
 
-  const [mostrarModal, setMostrarModal] = useState(false)
-  const handleMostrarModal = () => {
-    !mostrarModal ? setMostrarModal(true) : setMostrarModal(false)
+  const handleModal = () => {
+    !showModalProfile ? setShowModalProfile(true) : setShowModalProfile(false)
   }
 
   const api = useApi()
@@ -90,14 +91,9 @@ const Profiles = () => {
                       <h2>Informações do usuário</h2>
                       <div className="actions">
                         <button
-                          class="button"
-                          onClick={() => {
-                            alert(cursos)
-                            console.log(cursos)
-                          }}
-                        >
-                          Editar
-                        </button>
+                          class="button icon-pencil"
+                          onClick={handleModal}
+                        ></button>
                       </div>
                     </div>
                     <div class="infors">
@@ -145,6 +141,14 @@ const Profiles = () => {
             </div>
           </section>
         </main>
+
+        {/* [ Modal ] */}
+        {showModalProfile ? (
+          <ModalProfile
+            showModal={showModalProfile}
+            setShowModal={setShowModalProfile}
+          />
+        ) : null}
       </div>
     </BrowserRouter>
   )

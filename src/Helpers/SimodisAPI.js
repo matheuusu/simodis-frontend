@@ -69,7 +69,7 @@ const apiFetchGet = async (endpoint, body = []) => {
   const json = await res.json()
 
   if (json.notallowed) {
-    window.location.href = '/signin'
+    window.location.href = '/'
     return
   }
 
@@ -155,6 +155,16 @@ const SimodisAPI = {
     const json = await apiFetchPut('/user/altpassword', {
       token,
       newPassword
+    })
+    return json
+  },
+
+  altProfile: async (token, novoName, novoEmail, novaPassword) => {
+    const json = await apiFetchPut('/user/update', {
+      token,
+      novoName,
+      novoEmail,
+      novaPassword
     })
     return json
   },

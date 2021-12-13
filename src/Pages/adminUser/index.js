@@ -16,6 +16,7 @@ const AdminUsers = () => {
   const [user, setUser] = React.useState()
   const [modal, setModal] = React.useState(false)
   const [users, setUsers] = React.useState([])
+  const [userToken, setUserToken] = React.useState()
 
   const [cursos, setCursos] = React.useState([])
 
@@ -32,7 +33,7 @@ const AdminUsers = () => {
       const json = await api.getMyCoursers(token)
       setCursos(json)
     }
-    getMyCourse(token)
+    getMyCourse(userToken)
   }, [])
 
   return (
@@ -163,7 +164,7 @@ const AdminUsers = () => {
                         <tbody>
                           {cursos.map((item, index) => {
                             return (
-                              <tr>
+                              <tr key={index}>
                                 <td>{item.course}</td>
                                 <td>{item.grades}</td>
                               </tr>

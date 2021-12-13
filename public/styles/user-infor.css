@@ -1,5 +1,3 @@
-
-
 /* [ Main ] ///////////////////////////////////// */
 #admin-users #user-infor {
   overflow: hidden;
@@ -15,7 +13,7 @@
   gap: 2rem;
 }
 
-#admin-users .card-infor {
+#admin-users #user-infor .card-infor {
   width: 100%;
   padding: 2rem 3rem;
   background: var(--white);
@@ -26,51 +24,50 @@
   height: auto;
 }
 
-#admin-users .infor-user {
+#admin-users #user-infor .infor-user {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-#admin-users .infor-header {
+#admin-users #user-infor .infor-header {
   display: flex;
   justify-content: space-between;
 }
 
-#admin-users .infor-header .actions {
+#admin-users #user-infor .infor-header .actions {
   display: flex;
   gap: 1rem;
 }
 
-.mail-invite button.button {
+.mail-invite #user-infor button.button {
   height: 3rem;
   padding: 2rem 1rem;
 }
 
-#admin-users .infor-header .button {
+#admin-users #user-infor .infor-header .button {
   width: 8rem;
   height: 3rem;
   padding: 2rem 1rem;
 }
 
-
-#admin-users .infor-user .infors {
+#admin-users #user-infor .infor-user .infors {
   display: flex;
   justify-content: space-between;
 }
 
-#admin-users .mail-invite {
+#admin-users #user-infor .mail-invite {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-#admin-users h2 {
+#admin-users #user-infor h2 {
   font-family: 'Poppins';
 }
 
 /* [ table ] */
-#admin-users #data-table {
+#admin-users #user-infor #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
   color: var(--grey-dark);
@@ -78,17 +75,17 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
-#admin-users table thead tr th:first-child,
-#admin-users table tbody tr td:first-child {
+#admin-users #user-infor table thead tr th:first-child,
+#admin-users #user-infor table tbody tr td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
-#admin-users table thead tr th:last-child,
-#admin-users table tbody tr td:last-child {
+#admin-users #user-infor table thead tr th:last-child,
+#admin-users #user-infor table tbody tr td:last-child {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
-#admin-users table thead th {
+#admin-users #user-infor table thead th {
   background: var(--white);
 
   font-weight: 700;
@@ -97,12 +94,12 @@
   text-align: left;
 }
 
-#admin-users table tbody td {
+#admin-users #user-infor table tbody td {
   background: var(--white);
   padding: 1rem 2rem;
 }
 
-#admin-users table tbody tr a {
+#admin-users #user-infor table tbody tr a {
   background: var(--blue);
   color: var(--white);
   border-radius: 0.25rem;

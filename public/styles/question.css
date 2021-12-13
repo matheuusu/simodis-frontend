@@ -108,6 +108,7 @@
 /* [ Main ] ///////////////////////////////////// */
 #questions #question {
   overflow: hidden;
+  margin-bottom: 4rem;
 }
 
 #questions #question .container {
@@ -119,8 +120,13 @@
   gap: 2rem;
 }
 
-/* 
-#questions .card-infor {
+#questions #question .answers {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#questions #question .card-infor {
   width: 100%;
   padding: 2rem 3rem;
   background: var(--white);
@@ -129,20 +135,19 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
-#questions .card-infor h2 {
+#questions #question .card-infor h2 {
   font-size: 2.5rem;
-  margin: 2rem 0;
+  margin: 0.5rem 0;
   font-family: 'Poppins';
   color: var(--grey-dark);
 }
 
-#questions .card-infor .answers {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-}
-
+/* 
 #questions .card-infor input[type='radio'] {
+  width: 5rem;
+  height: 5rem;
+
+  border: 1px solid red;
 }
 
 #questions .card-infor label {

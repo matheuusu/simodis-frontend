@@ -29,6 +29,13 @@
   background: var(--grey-blue);
 }
 
+#profiles .profile-modal .gradients {
+  padding: 0.3rem;
+  border-radius: 5px;
+  background: #ffffff;
+  background-image: linear-gradient(315deg, rgb(32 80 120) 0%, #ffffff 33%);
+}
+
 #profiles {
   width: 100%;
 }
@@ -43,7 +50,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 11;
   background: var(--white);
 }
 
@@ -111,7 +118,6 @@
 
   padding: 2px;
   border: 2px solid var(--grey-blue);
-  cursor: pointer;
 
   opacity: 0;
 }
@@ -171,7 +177,6 @@
   padding: 2rem 1rem;
 }
 
-
 #profiles .infor-user .infors {
   display: flex;
   justify-content: space-between;
@@ -226,4 +231,43 @@
   border-radius: 0.25rem;
 
   padding: 0.3rem 1rem;
+}
+
+/* [ Form ] */
+#profiles .profile-modal h2,
+#profiles .profile-modal p {
+  margin-top: 0;
+  color: var(--grey-dark);
+}
+
+#profiles .profile-modal input {
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  outline: none;
+  width: 100%;
+  border: 1px solid var(--grey-blue);
+  margin-bottom: 0.5rem;
+}
+
+#profiles .profile-modal input.input-name {
+  border: 0.2rem solid var(--grey-blue);
+}
+
+#profiles .profile-modal .input-group {
+  margin-top: 0.8rem;
+}
+
+#profiles .profile-modal .input-group .help {
+  opacity: 0.4;
+}
+
+#profiles .profile-modal .input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profiles .profile-modal .input-group.actions .button,
+#profiles .profile-modal .input-group.actions button {
+  width: 48%;
 }

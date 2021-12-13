@@ -43,6 +43,7 @@ export default function Modal({ showCreate, setShowCreate }) {
 
     if (json == 'OK') {
       alert('sua pergunta foi cadastrada')
+      setShowCreate(false)
       return
     }
   }
@@ -51,9 +52,41 @@ export default function Modal({ showCreate, setShowCreate }) {
     setShowCreate(false)
   }
 
-  const handleNovaQuestao = async () => {
-    alert(courseId)
-    return
+  const handleNovaQuestao = async e => {
+    e.preventDefault()
+
+    const json = await api.createQuestion(
+      title,
+      answerTrue,
+      courseId,
+      answerOne,
+      answerTwo,
+      answerThree,
+      answerFour
+    )
+
+    console.log(json)
+
+    if (json.error) {
+      alert(JSON.stringify(json.error))
+      return
+    }
+
+    if (json == 'Igual') {
+      alert('sua questão já existe no banco, tente outra')
+      return
+    }
+
+    if (json == 'OK') {
+      alert('sua pergunta foi cadastrada')
+      setTitle('')
+      setAnswerTrue('')
+      setAnswerOne('')
+      setAnswerTwo('')
+      setAnswerThree('')
+      setAnswerFour('')
+      return
+    }
   }
 
   return (

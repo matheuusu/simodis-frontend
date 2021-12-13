@@ -106,7 +106,6 @@
 
   padding: 2px;
   border: 2px solid var(--grey-blue);
-  cursor: pointer;
 
   opacity: 0;
 }

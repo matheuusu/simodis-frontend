@@ -25,6 +25,14 @@ export const ModalCourse = styled.div`
         gap: 6rem;
       }
 
+      form {
+        padding: 1rem;
+
+        h2 {
+          margin-right: 20rem;
+        }
+      }
+
       form h2 {
         color: var(--grey-dark);
         margin-bottom: 1rem;

@@ -24,8 +24,7 @@ const Signup = () => {
         alert(JSON.stringify(json.error))
         return
       } else {
-        doLogin(json.token)
-        window.location.href = '/home'
+        window.location.href = '/'
       }
 
       setName('')
