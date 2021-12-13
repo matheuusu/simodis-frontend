@@ -172,6 +172,12 @@ const SimodisAPI = {
 
     return json
   }
-}
+},
+      
+  resolveTask: async (answers) => {
+   const json = await apiFetchPost('/course/resolvetask', {answers})
+   
+   return json
+  }
 
 export default () => SimodisAPI
