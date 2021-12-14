@@ -226,7 +226,6 @@ const AdminCourses = () => {
                       <div class="infor-header">
                         <h2>Informações do Curso</h2>
                         <div className="actions">
-                          <div class="botao">Editar</div>
                           <div
                             onClick={() => {
                               handleShowModal()
@@ -245,7 +244,7 @@ const AdminCourses = () => {
                         </div>
                         <div class="infor">
                           <label for="">Acessos</label>
-                          <h3>101</h3>
+                          <h3>0</h3>
                         </div>
                         <div class="infor">
                           <label for="">Ultima alteração</label>

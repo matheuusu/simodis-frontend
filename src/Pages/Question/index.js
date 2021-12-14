@@ -36,13 +36,21 @@ export default function Question() {
     getQuestion()
   }, [])
 
+  // Enviar respostas
+  const handleTasks = async () => {
+    const json = await api.resolveTask(test)
+
+    json > 6
+      ? alert(`Parabéns! Sua nota ${json} foi muito boa`)
+      : alert(`Você obteve ${json} acertos.`)
+  }
+
   const [test, setTest] = useState('')
 
   const handleOnChange = async event => {
     const target = event.target
     let value = target.value
     setTest(test + ',' + value)
-    alert(value)
   }
 
   const handleOutra = async () => {
@@ -95,9 +103,9 @@ export default function Question() {
         <main>
           <section class="section" id="question">
             <div class="container">
-              <form class="answers">
-                {quest.map((item, index) => {
-                  return (
+              {quest.map((item, index) => {
+                return (
+                  <form class="answers">
                     <div key={index} class="gradients">
                       <div class="card-infor">
                         <h2>{item.question}</h2>
@@ -107,9 +115,10 @@ export default function Question() {
                               <div key={index} className="quest">
                                 {answer.answer_false ? (
                                   <>
-                                    <label htmlFor="">
+                                    <label htmlFor={answer.id}>
                                       {answer.answer_false}
                                       <input
+                                        id={answer.id}
                                         name="qualquer"
                                         type="radio"
                                         value={answer.id}
@@ -121,9 +130,10 @@ export default function Question() {
                                   </>
                                 ) : answer.answer_true ? (
                                   <>
-                                    <label htmlFor="">
+                                    <label htmlFor={answer.id}>
                                       {answer.answer_true}
                                       <input
+                                        id={answer.id}
                                         name="qualquer"
                                         type="radio"
                                         value={answer.id}
@@ -140,13 +150,15 @@ export default function Question() {
                         </div>
                       </div>
                     </div>
-                  )
-                })}
+                  </form>
+                )
+              })}
 
-                <div className="input-group actions">
-                  <button className="button" onClick={handleOutra}></button>
-                </div>
-              </form>
+              <div className="input-group actions">
+                <button className="button" onClick={handleTasks}>
+                  Enviar
+                </button>
+              </div>
             </div>
           </section>
         </main>
